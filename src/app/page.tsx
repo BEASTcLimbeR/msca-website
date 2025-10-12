@@ -1,9 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { GradientText } from '@/components/ui/gradient-text'
 
 export default function Home() {
+  const router = useRouter()
   const [scrollProgress, setScrollProgress] = useState(0)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isMobileView, setIsMobileView] = useState(false)
+  const [isToggleOn, setIsToggleOn] = useState(false)
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -16,6 +22,35 @@ export default function Home() {
     window.addEventListener('scroll', updateScrollProgress)
     return () => window.removeEventListener('scroll', updateScrollProgress)
   }, [])
+
+  useEffect(() => {
+    const checkMobileView = () => {
+      setIsMobileView(window.innerWidth < 640) // sm breakpoint
+    }
+
+    checkMobileView()
+    window.addEventListener('resize', checkMobileView)
+    return () => window.removeEventListener('resize', checkMobileView)
+  }, [])
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const toggleSwitch = () => {
+    // Play sound effect
+    const audio = new Audio('/toggle.mp3')
+    audio.play().catch(error => {
+      console.log('Audio play failed:', error)
+    })
+    
+    setIsToggleOn(!isToggleOn)
+    
+    // Redirect to climbing page after a short delay
+    setTimeout(() => {
+      router.push('/climbing')
+    }, 500)
+  }
   return (
     <main className="min-h-screen bg-white">
       {/* Navigation Bar */}
@@ -29,6 +64,7 @@ export default function Home() {
                   src="/msca-logo-english.svg" 
                   alt="MSCA Logo" 
                   className="h-8 sm:h-10 md:h-12 lg:h-16 w-auto"
+                  loading="eager"
                   onError={(e) => {
                     console.error('Failed to load MSCA logo')
                     e.currentTarget.style.display = 'none'
@@ -38,11 +74,11 @@ export default function Home() {
             </div>
 
             {/* Desktop Navigation Links */}
-            <div className="hidden lg:block">
-              <div className="ml-10 flex items-baseline space-x-4 xl:space-x-6">
+            <div className="hidden lg:block flex-1">
+              <div className="ml-10 flex items-baseline space-x-3 xl:space-x-4">
                 <a href="#home" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans transition-colors duration-200">Home</a>
                 <div className="relative group">
-                  <a href="#about" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
+                  <a href="#about" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
                     About Us
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -75,7 +111,7 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="relative group">
-                  <a href="#contact" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
+                  <a href="#contact" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
                     Contact Us
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -86,31 +122,43 @@ export default function Home() {
             </div>
 
             {/* Action Buttons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-2">
-              <button className="px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md">
+            <div className="hidden lg:flex items-center space-x-2 ml-4">
+              <button 
+                onClick={() => document.getElementById('join-us')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
+              >
                 Join us
               </button>
-              <button className="px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md">
-                <span className="block leading-tight">View</span>
-                <span className="block leading-tight">Schedule</span>
+              <button className="px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap">
+                View Schedule
               </button>
-              <button className="px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md">
+              <button className="px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap">
                 Donate us
               </button>
             </div>
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
-              <button className="text-black hover:text-orange-600 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
-                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <button 
+                onClick={toggleMobileMenu}
+                className="text-black hover:text-orange-600 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200"
+                aria-expanded={isMobileMenuOpen}
+              >
+                <span className="sr-only">Open main menu</span>
+                {/* Hamburger icon */}
+                <svg className={`${isMobileMenuOpen ? 'hidden' : 'block'} h-6 w-6`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+                {/* Close icon */}
+                <svg className={`${isMobileMenuOpen ? 'block' : 'hidden'} h-6 w-6`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
           </div>
 
-          {/* Mobile Menu - Hidden by default */}
-          <div className="lg:hidden hidden">
+          {/* Mobile Menu */}
+          <div className={`${isMobileMenuOpen ? 'block' : 'hidden'} lg:hidden`}>
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
               <a href="#home" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Home</a>
               <a href="#about" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">About Us</a>
@@ -123,7 +171,13 @@ export default function Home() {
               {/* Mobile Action Buttons */}
               <div className="pt-4 border-t border-gray-200 mt-4">
                 <div className="space-y-2">
-                  <button className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center">
+                  <button 
+                    onClick={() => {
+                      document.getElementById('join-us')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMobileMenuOpen(false)
+                    }}
+                    className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center"
+                  >
                     Join us
                   </button>
                   <button className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center">
@@ -156,6 +210,7 @@ export default function Home() {
             src="/speed-and-lead.svg" 
             alt="Climbing Wall Background" 
             className="w-full h-full object-cover opacity-10 md:opacity-20"
+            loading="eager"
             onError={(e) => {
               console.error('Failed to load climbing wall image')
               e.currentTarget.style.display = 'none'
@@ -165,10 +220,43 @@ export default function Home() {
         
         <div className="text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Main Title */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-black mb-4 md:mb-6 leading-tight drop-shadow-lg" style={{ fontFamily: "'Playfair Display', serif" }}>
-            <div className="whitespace-nowrap sm:whitespace-normal">Maharashtra Sport Climbing</div>
-            <div>Association</div>
-          </h1>
+            <h1 className="text-4xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight drop-shadow-lg -mt-8 sm:mt-0 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+              {isMobileView ? (
+                <>
+                  <GradientText 
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                    className="block"
+                  >
+                    Maharashtra Sport
+                  </GradientText>
+                  <GradientText 
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                    className="block"
+                  >
+                    Climbing Association
+                  </GradientText>
+                </>
+              ) : (
+                <>
+                  <GradientText 
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                    className="block"
+                  >
+                    Maharashtra Sport Climbing
+                  </GradientText>
+                  <GradientText 
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                    className="block"
+                  >
+                    Association
+                  </GradientText>
+                </>
+              )}
+            </h1>
 
           {/* Tagline */}
           <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-black mb-8 md:mb-12 px-4" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -177,7 +265,10 @@ export default function Home() {
 
           {/* Call-to-Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4">
-            <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-black bg-white text-black font-sans font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
+            <button 
+              onClick={() => document.getElementById('join-us')?.scrollIntoView({ behavior: 'smooth' })}
+              className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-black bg-white text-black font-sans font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+            >
               Join us
             </button>
             <button className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-4 border-2 border-black bg-white text-black font-sans font-medium hover:bg-black hover:text-white transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
@@ -231,6 +322,231 @@ export default function Home() {
             <p className="text-gray-700 leading-relaxed text-base md:text-lg">
               Nevertheless, perseverance prevailed. The wall was finally built in 2010 and became functional by 2012. It proudly hosted the first homologated speed climbing wall in India, and also introduced the country's first timing device for speed climbing, setting new national standards.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Facility Section */}
+      <section id="facility" className="py-16 md:py-20 lg:py-24 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Our Facility
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              State-of-the-art climbing wall designed to international standards
+            </p>
+          </div>
+
+          {/* Main Content Grid */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
+            {/* Left Column - Facility Description */}
+            <div className="space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                PCMC Yoga Park Facility
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-base md:text-lg">
+                Our flagship facility at PCMC Yoga Park features a world-class climbing wall that meets international 
+                competition standards. The facility is designed to accommodate all three climbing disciplines: 
+                Lead, Speed, and Boulder.
+              </p>
+              
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="text-gray-700 text-base md:text-lg">15-meter lead climbing wall</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="text-gray-700 text-base md:text-lg">Speed climbing lane</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="text-gray-700 text-base md:text-lg">Boulder climbing area</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="text-gray-700 text-base md:text-lg">Safety equipment and training gear</span>
+                </div>
+                <div className="flex items-center">
+                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="text-gray-700 text-base md:text-lg">Professional coaching staff</span>
+                </div>
+              </div>
+              
+              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
+                Schedule a Visit
+              </button>
+            </div>
+            
+            {/* Right Column - Facility Specifications */}
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white">
+              <h4 className="text-2xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Facility Specifications
+              </h4>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">15m</div>
+                  <div className="text-gray-300">Wall Height</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">12m</div>
+                  <div className="text-gray-300">Wall Width</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">3</div>
+                  <div className="text-gray-300">Disciplines</div>
+                </div>
+                <div>
+                  <div className="text-3xl font-bold text-orange-400">24/7</div>
+                  <div className="text-gray-300">Access</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Climbing Wall Images Grid */}
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
+            <div className="bg-white rounded-lg p-6 shadow-sm border">
+              <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                <img 
+                  src="/lead-climbing-wall.svg" 
+                  alt="Lead Climbing Wall" 
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    console.error('Failed to load lead climbing wall image')
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+              </div>
+              <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Lead Climbing
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Technical climbing with rope protection, testing endurance and technique.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-lg p-6 shadow-sm border">
+              <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                <img 
+                  src="/speed-and-lead.svg" 
+                  alt="Speed Climbing Wall" 
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    console.error('Failed to load speed climbing wall image')
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+              </div>
+              <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Speed Climbing
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Fast-paced vertical racing on standardized routes with timing systems.
+              </p>
+            </div>
+            
+            <div className="bg-white rounded-lg p-6 shadow-sm border">
+              <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
+                <img 
+                  src="/boulder-left.svg" 
+                  alt="Boulder Climbing Area" 
+                  className="w-full h-full object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    console.error('Failed to load boulder climbing image')
+                    e.currentTarget.style.display = 'none'
+                  }}
+                />
+              </div>
+              <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Boulder Climbing
+              </h4>
+              <p className="text-gray-600 text-sm">
+                Short, powerful problems without ropes, focusing on strength and problem-solving.
+              </p>
+            </div>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 md:p-12 text-white">
+            <p className="text-orange-100 mb-6 text-lg">
+              Visit our world-class climbing wall and see why we're training India's future Olympic champions.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105">
+                Book a Tour
+              </button>
+              <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Join Us Section */}
+      <section id="join-us" className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Join Us
+            </h2>
+          </div>
+
+          {/* Content */}
+          <div className="text-center">
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
+              Be part of India's premier climbing community and help us build the future of sport climbing.
+            </p>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed mt-4">
+              Join hundreds of climbers who have already discovered their passion for climbing with MSCA.
+            </p>
+            
+            {/* Toggle Switch */}
+            <div className="mt-12 flex flex-col items-center">
+              <h3 className="text-2xl font-bold text-orange-500 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Ready to start climbing?
+              </h3>
+              <div className="relative">
+                <div 
+                  className={`w-48 h-24 rounded-full p-2 cursor-pointer transition-all duration-300 hover:shadow-lg ${
+                    isToggleOn ? 'bg-gradient-to-r from-blue-400 to-blue-600' : 'bg-gray-200'
+                  }`}
+                  onClick={toggleSwitch}
+                >
+                  <div 
+                    className={`w-20 h-20 bg-white rounded-full shadow-md flex items-center justify-center transition-transform duration-300 ${
+                      isToggleOn ? 'transform translate-x-24' : 'transform translate-x-0'
+                    }`}
+                  >
+                    <img 
+                      src={isToggleOn ? "/climb-icon.svg" : "/sleep-icon.svg"} 
+                      alt={isToggleOn ? "Climb Icon" : "Sleep Icon"} 
+                      className="w-12 h-12"
+                    />
+                  </div>
+                </div>
+                <p className="text-sm text-gray-500 font-medium mt-4 text-center">
+                  {!isToggleOn ? "Switch to climbing mode to join" : ""}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -340,178 +656,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Facility Section */}
-      <section id="facility" className="py-16 md:py-20 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Our Facility
-            </h2>
-            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              State-of-the-art climbing wall designed to international standards
-            </p>
-          </div>
-
-          {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
-            {/* Left Column - Facility Description */}
-            <div className="space-y-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                PCMC Yoga Park Facility
-              </h3>
-              <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-                Our flagship facility at PCMC Yoga Park features a world-class climbing wall that meets international 
-                competition standards. The facility is designed to accommodate all three climbing disciplines: 
-                Lead, Speed, and Boulder.
-              </p>
-              
-              <div className="space-y-4">
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-gray-700 text-base md:text-lg">15-meter lead climbing wall</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-gray-700 text-base md:text-lg">Speed climbing lane</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-gray-700 text-base md:text-lg">Boulder climbing area</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-gray-700 text-base md:text-lg">Safety equipment and training gear</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
-                    <span className="text-white text-sm">✓</span>
-                  </div>
-                  <span className="text-gray-700 text-base md:text-lg">Professional coaching staff</span>
-                </div>
-              </div>
-              
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                Schedule a Visit
-              </button>
-            </div>
-            
-            {/* Right Column - Facility Specifications */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white">
-              <h4 className="text-2xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Facility Specifications
-              </h4>
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">15m</div>
-                  <div className="text-gray-300">Wall Height</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">12m</div>
-                  <div className="text-gray-300">Wall Width</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">3</div>
-                  <div className="text-gray-300">Disciplines</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">24/7</div>
-                  <div className="text-gray-300">Access</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Climbing Wall Images Grid */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
-            <div className="bg-white rounded-lg p-6 shadow-sm border">
-              <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                <img 
-                  src="/lead-climbing-wall.svg" 
-                  alt="Lead Climbing Wall" 
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    console.error('Failed to load lead climbing wall image')
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-              <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Lead Climbing
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Technical climbing with rope protection, testing endurance and technique.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm border">
-              <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                <img 
-                  src="/speed-and-lead.svg" 
-                  alt="Speed Climbing Wall" 
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    console.error('Failed to load speed climbing wall image')
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-              <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Speed Climbing
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Fast-paced vertical racing on standardized routes with timing systems.
-              </p>
-            </div>
-            
-            <div className="bg-white rounded-lg p-6 shadow-sm border">
-              <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                <img 
-                  src="/boulder-left.svg" 
-                  alt="Boulder Climbing Area" 
-                  className="w-full h-full object-contain"
-                  onError={(e) => {
-                    console.error('Failed to load boulder climbing image')
-                    e.currentTarget.style.display = 'none'
-                  }}
-                />
-              </div>
-              <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Boulder Climbing
-              </h4>
-              <p className="text-gray-600 text-sm">
-                Short, powerful problems without ropes, focusing on strength and problem-solving.
-              </p>
-            </div>
-          </div>
-
-          {/* Call to Action */}
-          <div className="text-center bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 md:p-12 text-white">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Experience Our Olympic-Level Facility
-            </h3>
-            <p className="text-orange-100 mb-6 text-lg">
-              Visit our world-class climbing wall and see why we're training India's future Olympic champions.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105">
-                Book a Tour
-              </button>
-              <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105">
-                Contact Us
-              </button>
-            </div>
-          </div>
-    </div>
-      </section>
-    </main>
+      </main>
   )
 }

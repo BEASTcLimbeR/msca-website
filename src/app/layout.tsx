@@ -16,6 +16,8 @@ const playfairDisplay = Playfair_Display({
   variable: "--font-playfair-display",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -37,6 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preload critical images */}
+        <link rel="preload" href="/msca-logo-english.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href="/speed-and-lead.svg" as="image" type="image/svg+xml" />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfairDisplay.variable} antialiased`}
       >
