@@ -27,9 +27,9 @@ export default function ClimbingPage() {
 
           {/* Right Section - App Information */}
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Mobile Member App
-            </h1>
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  MSCA
+                </h1>
             
             <p className="text-lg md:text-xl text-gray-700 mb-8">
               A well-connected experience for your climbing journey
@@ -44,12 +44,6 @@ export default function ClimbingPage() {
                 <p className="text-gray-700 text-base">Book climbing sessions and classes</p>
               </div>
               
-              <div className="flex items-start space-x-3">
-                <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <span className="text-white text-sm">✓</span>
-                </div>
-                <p className="text-gray-700 text-base">Join remote / online training sessions</p>
-              </div>
               
               <div className="flex items-start space-x-3">
                 <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -96,18 +90,12 @@ export default function ClimbingPage() {
             
             {/* Download Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
-              <button className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-2">
-                <div className="text-left">
-                  <p className="text-xs">GET IT ON</p>
-                  <p className="text-lg font-semibold">Google Play</p>
-                </div>
+              <button className="bg-transparent hover:opacity-80 transition-all duration-300">
+                <img src="/playstore-icon.svg" alt="Google Play" className="h-12 w-auto" />
               </button>
               
-              <button className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all duration-300 flex items-center justify-center space-x-2">
-                <div className="text-left">
-                  <p className="text-xs">Download on the</p>
-                  <p className="text-lg font-semibold">App Store</p>
-                </div>
+              <button className="bg-transparent hover:opacity-80 transition-all duration-300">
+                <img src="/appstore-icon.svg" alt="App Store" className="h-12 w-auto" />
               </button>
             </div>
             

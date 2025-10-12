@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useMemo } from 'react'
 
 interface GradientTextProps {
   children: React.ReactNode
@@ -16,13 +16,19 @@ export const GradientText: React.FC<GradientTextProps> = ({
   className = ''
 }) => {
   const textRef = useRef<HTMLDivElement>(null)
-  const styleRef = useRef<HTMLStyleElement | null>(null)
+  const processedRef = useRef(false)
+
+  // Memoize colors to prevent unnecessary re-renders
+  const memoizedColors = useMemo(() => colors, [colors.join(',')])
 
   useEffect(() => {
-    if (!textRef.current) return
+    if (!textRef.current || processedRef.current) return
 
     const element = textRef.current
     const text = element.textContent || ''
+    
+    // Mark as processed to prevent re-processing
+    processedRef.current = true
     
     // Clear existing content
     element.innerHTML = ''
@@ -31,10 +37,11 @@ export const GradientText: React.FC<GradientTextProps> = ({
     const characters = text.split('')
     characters.forEach((char, index) => {
       const span = document.createElement('span')
+      span.className = 'gradient-char'
       span.textContent = char === ' ' ? '\u00A0' : char // Use non-breaking space
       span.style.display = 'inline-block'
-      span.style.background = `linear-gradient(45deg, ${colors.join(', ')})`
-      span.style.backgroundSize = `${colors.length * 100}% 100%`
+      span.style.background = `linear-gradient(45deg, ${memoizedColors.join(', ')})`
+      span.style.backgroundSize = `${memoizedColors.length * 100}% 100%`
       span.style.webkitBackgroundClip = 'text'
       span.style.backgroundClip = 'text'
       span.style.webkitTextFillColor = 'transparent'
@@ -44,7 +51,7 @@ export const GradientText: React.FC<GradientTextProps> = ({
     })
 
     // Add CSS animation only if not already added
-    if (!styleRef.current) {
+    if (!document.getElementById('gradient-text-animation')) {
       const style = document.createElement('style')
       style.id = 'gradient-text-animation'
       style.textContent = `
@@ -54,21 +61,8 @@ export const GradientText: React.FC<GradientTextProps> = ({
         }
       `
       document.head.appendChild(style)
-      styleRef.current = style
     }
-
-    return () => {
-      // Only clean up if this is the last instance
-      if (styleRef.current && styleRef.current.parentNode) {
-        try {
-          document.head.removeChild(styleRef.current)
-          styleRef.current = null
-        } catch (error) {
-          // Style already removed, ignore error
-        }
-      }
-    }
-  }, [colors, animationSpeed])
+  }, [memoizedColors, animationSpeed])
 
   return (
     <div ref={textRef} className={className}>

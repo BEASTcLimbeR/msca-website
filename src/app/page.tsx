@@ -11,6 +11,13 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isMobileView, setIsMobileView] = useState(false)
   const [isToggleOn, setIsToggleOn] = useState(false)
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  })
+  const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -32,6 +39,34 @@ export default function Home() {
     checkMobileView()
     window.addEventListener('resize', checkMobileView)
     return () => window.removeEventListener('resize', checkMobileView)
+  }, [])
+
+  useEffect(() => {
+    const calculateTimeLeft = () => {
+      const targetDate = new Date('November 1, 2025 00:00:00').getTime()
+      const now = new Date().getTime()
+      const difference = targetDate - now
+
+      if (difference > 0) {
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24))
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60))
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000)
+
+        // Trigger animation when numbers change
+        setIsAnimating(true)
+        setTimeout(() => setIsAnimating(false), 300)
+
+        setTimeLeft({ days, hours, minutes, seconds })
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 })
+      }
+    }
+
+    calculateTimeLeft()
+    const timer = setInterval(calculateTimeLeft, 1000)
+
+    return () => clearInterval(timer)
   }, [])
 
   const toggleMobileMenu = () => {
@@ -64,7 +99,7 @@ export default function Home() {
                 <img 
                   src="/msca-logo-english.svg" 
                   alt="MSCA Logo" 
-                  className="h-8 sm:h-10 md:h-12 lg:h-16 w-auto"
+                  className="h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 w-auto max-w-[200px] lg:max-w-[180px] xl:max-w-none"
                   loading="eager"
                   onError={(e) => {
                     console.error('Failed to load MSCA logo')
@@ -76,19 +111,19 @@ export default function Home() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:block flex-1">
-              <div className="ml-10 flex items-baseline space-x-3 xl:space-x-4">
-                <a href="#home" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans transition-colors duration-200">Home</a>
+              <div className="ml-2 xl:ml-10 flex items-baseline space-x-0.5 lg:space-x-1 xl:space-x-4">
+                <a href="#home" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans transition-colors duration-200">Home</a>
                 <div className="relative group">
-                  <a href="#about" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
+                  <a href="#about" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
                     About Us
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </svg>
                   </a>
                 </div>
-                <a href="#players" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans transition-colors duration-200">Players</a>
+                <a href="#players" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans transition-colors duration-200">Players</a>
                 <div className="relative group">
-                  <a href="#partners" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
+                  <a href="#partners" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
                     Partners
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -96,7 +131,7 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="relative group">
-                  <a href="#events" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
+                  <a href="#events" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
                     Events
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -104,7 +139,7 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="relative group">
-                  <a href="#achievements" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
+                  <a href="#achievements" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
                     Achievements
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -112,7 +147,7 @@ export default function Home() {
                   </a>
                 </div>
                 <div className="relative group">
-                  <a href="#contact" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
+                  <a href="#contact" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
                     Contact Us
                     <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -123,20 +158,20 @@ export default function Home() {
             </div>
 
             {/* Action Buttons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-2 ml-4">
+            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 ml-2 xl:ml-4">
               <button 
                 onClick={() => document.getElementById('join-us')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
+                className="px-1.5 xl:px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
               >
                 Join us
               </button>
               <button 
                 onClick={() => router.push('/schedule')}
-                className="px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
+                className="px-1.5 xl:px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
               >
                 View Schedule
               </button>
-              <button className="px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap">
+              <button className="px-1.5 xl:px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap">
                 Donate us
               </button>
               {/* Theme Toggle */}
@@ -298,6 +333,104 @@ export default function Home() {
             <button className="hero-button w-full sm:w-auto">
               Donate us
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* Countdown Section */}
+      <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 relative overflow-hidden">
+        {/* Enhanced Background Pattern */}
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full animate-pulse"></div>
+          <div className="absolute top-32 right-20 w-16 h-16 bg-gradient-to-r from-red-400 to-red-600 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-32 right-1/3 w-14 h-14 bg-gradient-to-r from-orange-300 to-orange-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+          <div className="absolute top-1/2 left-1/3 w-8 h-8 bg-gradient-to-r from-red-300 to-red-500 rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+          <div className="absolute top-1/3 right-1/4 w-10 h-10 bg-gradient-to-r from-yellow-300 to-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '2.5s' }}></div>
+        </div>
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/5 w-2 h-2 bg-orange-300 rounded-full animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+          <div className="absolute top-3/4 right-1/5 w-1.5 h-1.5 bg-red-300 rounded-full animate-bounce" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+          <div className="absolute top-1/2 left-2/3 w-1 h-1 bg-yellow-300 rounded-full animate-bounce" style={{ animationDelay: '2s', animationDuration: '2.5s' }}></div>
+          <div className="absolute top-1/6 right-1/3 w-2.5 h-2.5 bg-orange-200 rounded-full animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3.5s' }}></div>
+        </div>
+        
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            {/* IFSC Logo */}
+            <div className="flex justify-center mb-8">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20">
+                  <img 
+                    src="/ifsc-k-champioship-pcmc.svg" 
+                    alt="IFSC Asian Kids Championship Logo" 
+                    className="h-24 md:h-32 lg:h-40 w-auto mx-auto"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+            
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              IFSC Asian Kids Championship
+            </h2>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold text-orange-600 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Pimpri Chinchwad 2025
+            </h3>
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto">
+              Join us for the most prestigious climbing championship in Asia, featuring the next generation of climbing champions.
+            </p>
+          </div>
+
+          {/* Countdown Timer */}
+          <div className="flex justify-center mb-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+              {/* Days */}
+              <div className="countdown-item">
+                <div className={`countdown-number ${isAnimating ? 'animate-pulse' : ''}`} data-value={timeLeft.days.toString().padStart(2, '0')}>
+                  {timeLeft.days.toString().padStart(2, '0')}
+                </div>
+                <div className="countdown-label">Days</div>
+              </div>
+              
+              {/* Hours */}
+              <div className="countdown-item">
+                <div className={`countdown-number ${isAnimating ? 'animate-pulse' : ''}`} data-value={timeLeft.hours.toString().padStart(2, '0')}>
+                  {timeLeft.hours.toString().padStart(2, '0')}
+                </div>
+                <div className="countdown-label">Hours</div>
+              </div>
+              
+              {/* Minutes */}
+              <div className="countdown-item">
+                <div className={`countdown-number ${isAnimating ? 'animate-pulse' : ''}`} data-value={timeLeft.minutes.toString().padStart(2, '0')}>
+                  {timeLeft.minutes.toString().padStart(2, '0')}
+                </div>
+                <div className="countdown-label">Minutes</div>
+              </div>
+              
+              {/* Seconds */}
+              <div className="countdown-item">
+                <div className={`countdown-number ${isAnimating ? 'animate-pulse' : ''}`} data-value={timeLeft.seconds.toString().padStart(2, '0')}>
+                  {timeLeft.seconds.toString().padStart(2, '0')}
+                </div>
+                <div className="countdown-label">Seconds</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Event Details */}
+          <div className="text-center">
+            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
+              <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="text-gray-800 font-semibold">November 1, 2025</span>
+            </div>
           </div>
         </div>
       </section>
@@ -626,10 +759,25 @@ export default function Home() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white p-6 md:p-8 rounded-lg">
+            <div className="bg-gradient-to-br from-orange-500 to-red-600 text-white p-6 md:p-8 rounded-lg mb-8">
               <p className="text-orange-100 leading-relaxed text-base md:text-lg font-medium">
                 In a historic acknowledgment, the contributions of Surendra Shelke and Shrikrishna Kaduskar were specifically mentioned in the 2012 Sport Policy.
               </p>
+            </div>
+
+            {/* PDF Download Button */}
+            <div className="text-center">
+              <a 
+                href="/sports-policy-2012.pdf" 
+            target="_blank"
+            rel="noopener noreferrer"
+                className="inline-flex items-center space-x-3 bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Download 2012 Sports Policy PDF</span>
+              </a>
             </div>
           </div>
         </div>
@@ -647,11 +795,11 @@ export default function Home() {
 
           {/* Main Content */}
           <div className="prose prose-lg max-w-none">
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-8">
+            <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-12 text-center">
               Since 2000, PCMA and its successors have worked relentlessly to promote Sport Climbing, creating a robust talent pipeline that includes:
             </p>
 
-            <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 md:p-8 rounded-lg border border-orange-200">
+            <div className="bg-gradient-to-r from-orange-50 to-red-50 p-6 md:p-8 rounded-lg border border-orange-200 mb-12">
               <ul className="space-y-4 text-gray-700">
                 <li className="flex items-start">
                   <span className="text-orange-500 font-bold text-lg mr-3">●</span>
@@ -668,11 +816,598 @@ export default function Home() {
                 <li className="flex items-start">
                   <span className="text-orange-500 font-bold text-lg mr-3">●</span>
                   <span className="text-base md:text-lg leading-relaxed">
-                    Elite coaches like Amol, Mantu, and Irfan — with Amol also having served as the National Coach for Asian competitions
+                    Elite coaches who have shaped the future of climbing in India
                   </span>
                 </li>
               </ul>
             </div>
+
+            {/* Elite Coaches Section */}
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-bold text-black mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Our Elite Coaching Team
+              </h3>
+              <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
+                Meet the world-class coaches who have trained champions and continue to shape the future of climbing in India.
+              </p>
+            </div>
+
+            {/* Coaches Grid */}
+            <div className="grid md:grid-cols-3 gap-8 mb-12">
+              {/* Amol Jogdand */}
+              <div className="text-center group">
+                <div className="relative mb-6">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                  <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-200 group-hover:shadow-xl transition-all duration-300">
+                    <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-200 group-hover:border-orange-400 transition-colors duration-300">
+                      <img 
+                        src="/amol-jogdand.svg" 
+                        alt="Amol Jogdand" 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Amol Jogdand
+                    </h4>
+                    <p className="text-orange-600 font-semibold text-sm mb-2">
+                      National Coach (Asian Competitions)
+                    </p>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Elite coach with extensive experience in training national and international climbing champions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mantu Mantri */}
+              <div className="text-center group">
+                <div className="relative mb-6">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                  <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-200 group-hover:shadow-xl transition-all duration-300">
+                    <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-200 group-hover:border-orange-400 transition-colors duration-300">
+                      <img 
+                        src="/mantu-mantri.svg" 
+                        alt="Mantu Mantri" 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Mantu Mantri
+                    </h4>
+                    <p className="text-orange-600 font-semibold text-sm mb-2">
+                      Elite Coach
+                    </p>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Dedicated coach specializing in developing climbing techniques and training methodologies.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Irfan Shaikh */}
+              <div className="text-center group">
+                <div className="relative mb-6">
+                  <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-0 group-hover:opacity-75 transition duration-500"></div>
+                  <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-200 group-hover:shadow-xl transition-all duration-300">
+                    <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-200 group-hover:border-orange-400 transition-colors duration-300">
+                      <img 
+                        src="/irfan-shaikh.svg" 
+                        alt="Irfan Shaikh" 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                      Irfan Shaikh
+                    </h4>
+                    <p className="text-orange-600 font-semibold text-sm mb-2">
+                      Elite Coach
+                    </p>
+                    <p className="text-gray-600 text-sm leading-relaxed">
+                      Expert coach focused on building strength, endurance, and competitive climbing skills.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Shiv Chhatrapati Awardees Section */}
+      <section className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              <GradientText
+                colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                animationSpeed={8}
+              >
+                Shiv Chhatrapati Rajya Krida Puraskar
+              </GradientText>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Four homegrown champions honored with Maharashtra's highest sporting accolade
+            </p>
+          </div>
+
+          {/* Awardees List */}
+          <div className="space-y-16">
+            {/* Hritik Marne aka Nanya - Text Left, Image Right */}
+            <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6">
+              <div className="flex-1 text-left">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Hritik Marne
+                </h3>
+                <p className="text-orange-600 font-semibold text-lg mb-2">aka Nanya</p>
+                <div className="text-lg mb-2 font-semibold">
+                  <GradientText
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                  >
+                    Shiv Chhatrapati Rajya Krida Puraskar
+                  </GradientText>
+                </div>
+                <p className="text-gray-500 text-base">2023-24</p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src="/hritik-marne.svg" 
+                    alt="Hritik Marne aka Nanya" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Shreya Nankar - Text Right, Image Left */}
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-4 lg:gap-6">
+              <div className="flex-1 text-left">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Shreya Nankar
+                </h3>
+                <div className="text-lg mb-2 font-semibold">
+                  <GradientText
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                  >
+                    Shiv Chhatrapati Rajya Krida Puraskar
+                  </GradientText>
+                </div>
+                <p className="text-gray-500 text-base">2023-24</p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="w-80 h-80 rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src="/shreya-nankar.svg" 
+                    alt="Shreya Nankar" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Sahil Khan - Text Left, Image Right */}
+            <div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-6">
+              <div className="flex-1 text-left">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Sahil Khan
+                </h3>
+                <div className="text-lg mb-2 font-semibold">
+                  <GradientText
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                  >
+                    Shiv Chhatrapati Rajya Krida Puraskar
+                  </GradientText>
+                </div>
+                <p className="text-gray-500 text-base">2023-24</p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="w-80 h-80 rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src="/sahil-khan.svg" 
+                    alt="Sahil Khan" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Saniya Shaikh - Text Right, Image Left */}
+            <div className="flex flex-col lg:flex-row-reverse items-center gap-4 lg:gap-6">
+              <div className="flex-1 text-left">
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Saniya Shaikh
+                </h3>
+                <div className="text-lg mb-2 font-semibold">
+                  <GradientText
+                    colors={['#ff6b35', '#f7931e', '#ffd700', '#ff6b35', '#e74c3c', '#ff1744', '#ff6b35', '#f7931e', '#ffd700', '#ff6b35']}
+                    animationSpeed={8}
+                  >
+                    Shiv Chhatrapati Rajya Krida Puraskar
+                  </GradientText>
+                </div>
+                <p className="text-gray-500 text-base">2023-24</p>
+              </div>
+              <div className="flex-shrink-0">
+                <div className="w-80 h-96 rounded-lg overflow-hidden shadow-lg">
+                  <img 
+                    src="/saniya-shaikh.svg" 
+                    alt="Saniya Shaikh" 
+                    className="w-full h-full object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Achievement Statement */}
+          <div className="text-center mt-16 md:mt-20">
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Maharashtra's Highest Sporting Honor
+              </h3>
+              <p className="text-lg md:text-xl leading-relaxed text-gray-700">
+                These four homegrown champions represent the pinnacle of climbing excellence in Maharashtra, 
+                having been recognized with the prestigious Shiv Chhatrapati Rajya Krida Puraskar for their 
+                outstanding contributions to sport climbing. Their achievements stand as a testament to decades 
+                of dedication in building the sport from the grassroots.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Empowering the Underprivileged Section */}
+      <section className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Empowering the Underprivileged
+              </h2>
+              <p className="text-lg md:text-xl leading-relaxed text-gray-700">
+                A unique and heartwarming aspect of this journey is the socio-economic background 
+                of many trained athletes. A significant number of them come from underprivileged 
+                communities and urban slums. Through the association's support, they have risen not 
+                only as athletes but have now become coaches, trainers, and officials — emerging as 
+                leaders of the next generation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The World-Class PCMC Climbing Wall & Future Vision Section */}
+      <section className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                The World-Class PCMC Climbing Wall & Future Vision
+              </h2>
+              <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-6">
+                The most recent milestone is the erection of the world-class climbing wall at PCMC's 
+                Yoga Park, a result of untiring efforts by Surendra Shelke and Shrikrishna Kaduskar. 
+                Regarded as the best in India and among the top in the world, this facility marks a 
+                new era in Indian climbing infrastructure.
+              </p>
+              <p className="text-lg md:text-xl leading-relaxed text-gray-700">
+                Recognizing the potential, the MSCA has embarked on an ambitious journey to 
+                establish a structured Sport Climbing Academy, with the ultimate aim of producing 
+                Olympic medalists by 2036 — a vision aligned with government of India's long-term 
+                sports development goals.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MSCA & PCMC: A Strategic Partnership Section */}
+      <section className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                MSCA & PCMC: A Strategic Partnership
+              </h2>
+              <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-6">
+                MSCA has entered into a 20-year agreement with PCMC to manage and operate the 
+                Climbing Wall at Yoga Park. Under this partnership:
+              </p>
+              <div className="text-left max-w-3xl mx-auto">
+                <ul className="space-y-4 text-lg md:text-xl text-gray-700">
+                  <li className="flex items-start">
+                    <span className="text-orange-500 font-bold text-xl mr-3">●</span>
+                    <span>MSCA will oversee all day-to-day operations, training, coaching, and events.</span>
+                  </li>
+                  <li className="flex items-start">
+                    <span className="text-orange-500 font-bold text-xl mr-3">●</span>
+                    <span>PCMC will continue to provide infrastructure and institutional support.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section - AADAR Foundation Style */}
+      <section className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Our Journey Through Time
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">
+              From humble beginnings to Olympic aspirations - the remarkable evolution of climbing in Maharashtra
+            </p>
+          </div>
+
+          {/* Timeline Container */}
+          <div className="space-y-20">
+            
+            {/* 1990s - Foundation */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-orange-500 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Late 1990s
+                </div>
+                <div className="w-16 h-1 bg-orange-500 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 border-l-4 border-orange-500">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Founders' Early Vision
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    Pimpri Chinchwad Mountaineering Association (PCMA) proposes the idea of a climbing wall to PCMC (Pimpri Chinchwad Municipal Corporation). Surendra Shelke (Surya), Sagar Palkar (Everester & youth advocate), and Shrikrishna Kaduskar are the driving forces.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-orange-200">
+                    <h4 className="font-semibold text-orange-700 mb-2">Exploratory Step:</h4>
+                    <p className="text-gray-600">
+                      Surya and associates travel to Bikaner to observe the West Zone Sport Climbing Championship, studying infrastructure and format before building PCMC's wall.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2000 - First Wall */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-orange-600 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2000
+                </div>
+                <div className="w-16 h-1 bg-orange-600 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 border-l-4 border-orange-600">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    First Competition Wall in PCMC
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    With PCMC's infrastructural support, the first-ever competition-standard climbing wall is built at Annasaheb Magar Stadium. Surendra Shelke (Surya) is the backbone of the project — without his persistence, the wall wouldn't have materialized.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2002 - First Championship */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-orange-700 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2002
+                </div>
+                <div className="w-16 h-1 bg-orange-700 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 border-l-4 border-orange-700">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Pioneering Competitions
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    Under the guidance of late Khaire Sir and Surya, PCMA hosts the first West Zone Sport Climbing Championship at Annasaheb Magar Stadium.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2005 - National Breakthrough */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-red-500 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2005
+                </div>
+                <div className="w-16 h-1 bg-red-500 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-8 border-l-4 border-red-500">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    National Breakthrough
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    PCMA successfully hosts the National Sport Climbing Championship at Annasaheb Magar Stadium.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-red-200">
+                    <h4 className="font-semibold text-red-700 mb-2">Pune Expansion:</h4>
+                    <p className="text-gray-600">
+                      The championship's success inspires PCMA to propose a second climbing wall in Pune (Raje Shivaji Climbing Wall, Shivajinagar).
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2005-2010 - Struggle Period */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-red-600 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2005 - 2010
+                </div>
+                <div className="w-16 h-1 bg-red-600 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-2xl p-8 border-l-4 border-red-600">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Five Years of Struggle
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    Over 150 potential sites for the Pune wall are reviewed; most rejected due to local resistance and lack of political awareness about climbing.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-red-200">
+                    <h4 className="font-semibold text-red-700 mb-2">Relentless Efforts:</h4>
+                    <p className="text-gray-600">
+                      Despite setbacks, Surendra Shelke and Shrikrishna Kaduskar persist with follow-ups until approval is granted.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2010 - Pune Wall & Policy */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-yellow-500 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2010
+                </div>
+                <div className="w-16 h-1 bg-yellow-500 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 border-l-4 border-yellow-500">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Pune Wall Constructed
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    The Raje Shivaji Climbing Wall is built in Shivajinagar, Pune. Maharashtra announces work on a new Sports Policy.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-yellow-200">
+                    <h4 className="font-semibold text-yellow-700 mb-2">Policy Opportunity:</h4>
+                    <p className="text-gray-600 mb-3">
+                      Unlike other adventure groups (who asked for tickets/funds), PCMA submits two structured presentations:
+                    </p>
+                    <ul className="text-gray-600 space-y-1">
+                      <li>• Comprehensive proposal covering all adventure sports (Air, Water, Land — with focus on mountaineering & rock climbing)</li>
+                      <li>• Dedicated proposal for Sport Climbing</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2012 - Recognition */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-yellow-600 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2012
+                </div>
+                <div className="w-16 h-1 bg-yellow-600 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-yellow-50 to-yellow-100 rounded-2xl p-8 border-l-4 border-yellow-600">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Policy Milestone
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    The 2012 Maharashtra State Sports Policy incorporates PCMA's proposals with a separate chapter on Adventure Sports.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-yellow-200">
+                    <h4 className="font-semibold text-yellow-700 mb-2">Historic Acknowledgment:</h4>
+                    <p className="text-gray-600">
+                      Contributions of Surendra Shelke and Shrikrishna Kaduskar are specifically mentioned in the policy. Sport Climbing formally recognized and included in Shiv Chhatrapati State Sports Awards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2000-2020s - Ecosystem */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-green-500 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2000 - 2020s
+                </div>
+                <div className="w-16 h-1 bg-green-500 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-8 border-l-4 border-green-500">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Grassroots to National Ecosystem
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    PCMA nurtures National and International medal winners, elite coaches, and officials who now serve across India.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="bg-white rounded-lg p-4 border border-green-200">
+                      <h4 className="font-semibold text-green-700 mb-2">Elite Coaches:</h4>
+                      <p className="text-gray-600">Amol (also National Coach for Asian competitions), Mantu, and Irfan</p>
+                    </div>
+                    <div className="bg-white rounded-lg p-4 border border-green-200">
+                      <h4 className="font-semibold text-green-700 mb-2">Shiv Chhatrapati Awardees:</h4>
+                      <p className="text-gray-600">Hritik Marne, Shreya Nankar, Sahil Khan, and Saniya Shaikh</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 2020s - World-Class Wall */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-green-600 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2020s
+                </div>
+                <div className="w-16 h-1 bg-green-600 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-green-50 to-green-100 rounded-2xl p-8 border-l-4 border-green-600">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    World-Class Yoga Park Wall
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed text-lg">
+                    A state-of-the-art climbing wall is erected at PCMC's Yoga Park, thanks to Surya's and Kaduskar's tireless efforts. Recognized as the best in India and among the top in the world.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* 2025 - MSCA Formation */}
+            <div className="flex flex-col lg:flex-row items-start gap-8 lg:gap-12">
+              <div className="lg:w-1/3">
+                <div className="text-6xl font-bold text-blue-500 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  2025
+                </div>
+                <div className="w-16 h-1 bg-blue-500 mb-6"></div>
+              </div>
+              <div className="lg:w-2/3">
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-2xl p-8 border-l-4 border-blue-500">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    MSCA Formation & Olympic Vision
+                  </h3>
+                  <p className="text-gray-700 leading-relaxed mb-6 text-lg">
+                    MSCA established with 20-year strategic partnership with PCMC. Ambitious target: producing Olympic medalists by 2036, aligned with Government of India's long-term sports development goals.
+                  </p>
+                  <div className="bg-white rounded-lg p-4 border border-blue-200">
+                    <h4 className="font-semibold text-blue-700 mb-2">Strategic Partnership:</h4>
+                    <p className="text-gray-600">
+                      MSCA → Handles day-to-day operations, training, coaching, and events. PCMC → Provides infrastructure and institutional support.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>

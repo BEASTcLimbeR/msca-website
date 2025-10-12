@@ -323,6 +323,193 @@ html {
   box-shadow: none;
 }
 
+/* Countdown Timer Styles */
+.countdown-item {
+  text-align: center;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.8));
+  backdrop-filter: blur(15px);
+  border-radius: 24px;
+  padding: 24px 18px;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  transform: translateY(0);
+}
+
+.countdown-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transition: left 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.countdown-item::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(255, 165, 0, 0.1), transparent);
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.countdown-item:hover::before {
+  left: 100%;
+}
+
+.countdown-item:hover::after {
+  opacity: 1;
+}
+
+.countdown-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.18),
+    0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  border-color: rgba(255, 165, 0, 0.3);
+}
+
+.countdown-number {
+  font-size: 3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #1f2937, #374151, #1f2937);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  font-family: 'Playfair Display', serif;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  animation: countdownPulse 2s ease-in-out infinite, gradientShift 3s ease-in-out infinite;
+  position: relative;
+  z-index: 2;
+}
+
+.countdown-number::before {
+  content: attr(data-value);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #f59e0b, #f97316, #ea580c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0;
+  animation: numberGlow 2s ease-in-out infinite;
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #4b5563;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 2;
+  animation: labelFloat 3s ease-in-out infinite;
+}
+
+@keyframes countdownPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes numberGlow {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes labelFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Enhanced countdown item animations */
+.countdown-item:nth-child(1) {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.countdown-item:nth-child(2) {
+  animation: slideInLeft 0.8s ease-out 0.2s both;
+}
+
+.countdown-item:nth-child(3) {
+  animation: slideInLeft 0.8s ease-out 0.4s both;
+}
+
+.countdown-item:nth-child(4) {
+  animation: slideInLeft 0.8s ease-out 0.6s both;
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .countdown-number {
+    font-size: 2rem;
+  }
+  
+  .countdown-item {
+    padding: 15px 10px;
+  }
+}
+
 /* Smaller theme toggle for navbar */
 .panel.small {
   height: 60px;
