@@ -39,7 +39,7 @@ export default function Home() {
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:block">
-              <div className="ml-10 flex items-baseline space-x-6 xl:space-x-8">
+              <div className="ml-10 flex items-baseline space-x-4 xl:space-x-6">
                 <a href="#home" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans transition-colors duration-200">Home</a>
                 <div className="relative group">
                   <a href="#about" className="text-black hover:text-orange-600 px-3 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
@@ -85,6 +85,19 @@ export default function Home() {
               </div>
             </div>
 
+            {/* Action Buttons - Desktop */}
+            <div className="hidden lg:flex items-center space-x-3">
+              <button className="px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded">
+                Join us
+              </button>
+              <button className="px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded">
+                View Schedule
+              </button>
+              <button className="px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded">
+                Donate us
+              </button>
+            </div>
+
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
               <button className="text-black hover:text-orange-600 p-2 rounded-lg hover:bg-gray-100 transition-colors duration-200">
@@ -105,6 +118,21 @@ export default function Home() {
               <a href="#events" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Events</a>
               <a href="#achievements" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Achievements</a>
               <a href="#contact" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Contact Us</a>
+              
+              {/* Mobile Action Buttons */}
+              <div className="pt-4 border-t border-gray-200 mt-4">
+                <div className="space-y-2">
+                  <button className="w-full px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded text-center">
+                    Join us
+                  </button>
+                  <button className="w-full px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded text-center">
+                    View Schedule
+                  </button>
+                  <button className="w-full px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded text-center">
+                    Donate us
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
