@@ -86,14 +86,15 @@ export default function Home() {
             </div>
 
             {/* Action Buttons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-3">
-              <button className="px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded">
+            <div className="hidden lg:flex items-center space-x-2">
+              <button className="px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md">
                 Join us
               </button>
-              <button className="px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded">
-                View Schedule
+              <button className="px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md">
+                <span className="block leading-tight">View</span>
+                <span className="block leading-tight">Schedule</span>
               </button>
-              <button className="px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded">
+              <button className="px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md">
                 Donate us
               </button>
             </div>
@@ -122,13 +123,14 @@ export default function Home() {
               {/* Mobile Action Buttons */}
               <div className="pt-4 border-t border-gray-200 mt-4">
                 <div className="space-y-2">
-                  <button className="w-full px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded text-center">
+                  <button className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center">
                     Join us
                   </button>
-                  <button className="w-full px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded text-center">
-                    View Schedule
+                  <button className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center">
+                    <span className="block leading-tight">View</span>
+                    <span className="block leading-tight">Schedule</span>
                   </button>
-                  <button className="w-full px-4 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded text-center">
+                  <button className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center">
                     Donate us
                   </button>
                 </div>
