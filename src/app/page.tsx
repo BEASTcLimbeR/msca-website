@@ -432,6 +432,16 @@ export default function Home() {
               <span className="text-gray-800 font-semibold">November 1, 2025</span>
             </div>
           </div>
+
+          {/* View Previous Events Button */}
+          <div className="text-center mt-6">
+            <button 
+              onClick={() => router.push('/previous-events')}
+              className="bg-white/90 hover:bg-white text-gray-800 hover:text-gray-900 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/50 font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md"
+            >
+              View Previous Events
+            </button>
+          </div>
         </div>
       </section>
 
