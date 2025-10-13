@@ -16,19 +16,15 @@ export const GradientText: React.FC<GradientTextProps> = ({
   className = ''
 }) => {
   const textRef = useRef<HTMLDivElement>(null)
-  const processedRef = useRef(false)
 
   // Memoize colors to prevent unnecessary re-renders
   const memoizedColors = useMemo(() => colors, [colors.join(',')])
 
   useEffect(() => {
-    if (!textRef.current || processedRef.current) return
+    if (!textRef.current) return
 
     const element = textRef.current
     const text = element.textContent || ''
-    
-    // Mark as processed to prevent re-processing
-    processedRef.current = true
     
     // Clear existing content
     element.innerHTML = ''
@@ -45,6 +41,7 @@ export const GradientText: React.FC<GradientTextProps> = ({
       span.style.webkitBackgroundClip = 'text'
       span.style.backgroundClip = 'text'
       span.style.webkitTextFillColor = 'transparent'
+      span.style.color = 'transparent'
       span.style.animation = `gradientShift ${animationSpeed}s ease-in-out infinite`
       span.style.animationDelay = `${index * 0.1}s`
       element.appendChild(span)
@@ -59,13 +56,28 @@ export const GradientText: React.FC<GradientTextProps> = ({
           0%, 100% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
         }
+        .gradient-char {
+          display: inline-block;
+        }
       `
       document.head.appendChild(style)
     }
   }, [memoizedColors, animationSpeed])
 
   return (
-    <div ref={textRef} className={className}>
+    <div 
+      ref={textRef} 
+      className={className}
+      style={{
+        background: `linear-gradient(45deg, ${memoizedColors.join(', ')})`,
+        backgroundSize: `${memoizedColors.length * 100}% 100%`,
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        color: 'transparent',
+        animation: `gradientShift ${animationSpeed}s ease-in-out infinite`
+      }}
+    >
       {children}
     </div>
   )

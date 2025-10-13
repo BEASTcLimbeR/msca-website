@@ -2,7 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
+import Image from 'next/image'
 import { GradientText } from '@/components/ui/gradient-text'
+import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 
 export default function Home() {
@@ -96,82 +98,119 @@ export default function Home() {
             {/* MSCA Logo */}
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img 
-                  src="/msca-logo-english.svg" 
+                <Image 
+                  src="/msca-logo-marathi.svg" 
                   alt="MSCA Logo" 
+                  width={200}
+                  height={64}
                   className="h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 w-auto max-w-[200px] lg:max-w-[180px] xl:max-w-none"
-                  loading="eager"
-                  onError={(e) => {
-                    console.error('Failed to load MSCA logo')
-                    e.currentTarget.style.display = 'none'
-                  }}
+                  priority
                 />
               </div>
             </div>
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:block flex-1">
-              <div className="ml-2 xl:ml-10 flex items-baseline space-x-0.5 lg:space-x-1 xl:space-x-4">
-                <a href="#home" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans transition-colors duration-200">Home</a>
-                <div className="relative group">
-                  <a href="#about" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
-                    About Us
-                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </a>
-                </div>
-                <a href="#players" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans transition-colors duration-200">Players</a>
-                <div className="relative group">
-                  <a href="#partners" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
-                    Partners
-                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </a>
-                </div>
-                <div className="relative group">
-                  <a href="#events" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
-                    Events
-                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </a>
-                </div>
-                <div className="relative group">
-                  <a href="#achievements" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200">
-                    Achievements
-                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </a>
-                </div>
-                <div className="relative group">
-                  <a href="#contact" className="text-black hover:text-orange-600 px-1 py-2 text-sm font-medium font-sans flex items-center transition-colors duration-200 whitespace-nowrap">
-                    Contact Us
-                    <svg className="ml-1 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </a>
-                </div>
+              <div className="ml-2 xl:ml-10 flex items-baseline space-x-1 lg:space-x-1 xl:space-x-4 lg:ml-6">
+                <a href="#home" className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200">Home</a>
+                <a 
+                  href="#about" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200 whitespace-nowrap"
+                >
+                  About Us
+                </a>
+                <a 
+                  href="#about" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                    // Scroll to associations section after a short delay
+                    setTimeout(() => {
+                      const associationsSection = document.querySelector('[data-section="associations"]');
+                      if (associationsSection) {
+                        associationsSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }, 500);
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
+                >
+                  Associations
+                </a>
+                <a 
+                  href="#our-athletes" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('our-athletes')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
+                >
+                  Our Athletes
+                </a>
+                <a 
+                  href="#facility" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('facility')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
+                >
+                  Our Facility
+                </a>
+                <a 
+                  href="#events" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
+                >
+                  Events
+                </a>
+                <a 
+                  href="#achievements" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('achievements')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
+                >
+                  Achievements
+                </a>
+                <a 
+                  href="#contact" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200 whitespace-nowrap"
+                >
+                  Contact Us
+                </a>
               </div>
             </div>
 
             {/* Action Buttons - Desktop */}
-            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 ml-2 xl:ml-4">
+            <div className="hidden lg:flex items-center space-x-2 xl:space-x-2 ml-0 xl:ml-4">
               <button 
                 onClick={() => document.getElementById('join-us')?.scrollIntoView({ behavior: 'smooth' })}
-                className="px-1.5 xl:px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
+                className="px-2 xl:px-2 py-1.5 border border-gray-300 bg-white text-black lg:text-xs xl:text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
               >
                 Join us
               </button>
               <button 
                 onClick={() => router.push('/schedule')}
-                className="px-1.5 xl:px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
+                className="px-2 xl:px-2 py-1.5 border border-gray-300 bg-white text-black lg:text-xs xl:text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
               >
                 View Schedule
               </button>
-              <button className="px-1.5 xl:px-2 py-1.5 border border-gray-300 bg-white text-black text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap">
+              <button 
+                onClick={() => document.getElementById('donate-us')?.scrollIntoView({ behavior: 'smooth' })}
+                className="px-2 xl:px-2 py-1.5 border border-gray-300 bg-white text-black lg:text-xs xl:text-xs font-medium hover:bg-gray-50 transition-all duration-200 rounded-md whitespace-nowrap"
+              >
                 Donate us
               </button>
               {/* Theme Toggle */}
@@ -205,11 +244,78 @@ export default function Home() {
             <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
               <a href="#home" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Home</a>
               <a href="#about" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">About Us</a>
-              <a href="#players" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Players</a>
-              <a href="#partners" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Partners</a>
-              <a href="#events" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Events</a>
-              <a href="#achievements" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Achievements</a>
-              <a href="#contact" className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200">Contact Us</a>
+              <a 
+                href="#about" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                  setTimeout(() => {
+                    const associationsSection = document.querySelector('[data-section="associations"]');
+                    if (associationsSection) {
+                      associationsSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }, 500);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Associations
+              </a>
+              <a 
+                href="#our-athletes" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('our-athletes')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Our Athletes
+              </a>
+              <a 
+                href="#facility" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('facility')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Our Facility
+              </a>
+              <a 
+                href="#events" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('events')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Events
+              </a>
+              <a 
+                href="#achievements" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('achievements')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Achievements
+              </a>
+              <a 
+                href="#contact" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Contact Us
+              </a>
               
               {/* Mobile Action Buttons */}
               <div className="pt-4 border-t border-gray-200 mt-4">
@@ -233,7 +339,13 @@ export default function Home() {
                     <span className="block leading-tight">View</span>
                     <span className="block leading-tight">Schedule</span>
                   </button>
-                  <button className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center">
+                  <button 
+                    onClick={() => {
+                      document.getElementById('donate-us')?.scrollIntoView({ behavior: 'smooth' })
+                      setIsMobileMenuOpen(false)
+                    }}
+                    className="w-full px-3 py-2 border border-gray-300 bg-white text-black text-sm font-medium hover:bg-gray-50 transition-all duration-200 rounded-md text-center"
+                  >
                     Donate us
                   </button>
                   {/* Mobile Theme Toggle */}
@@ -259,15 +371,12 @@ export default function Home() {
       <section id="home" className="pt-16 md:pt-20 min-h-screen bg-gray-100 flex items-center justify-center relative overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
+          <Image 
             src="/speed-and-lead.svg" 
             alt="Climbing Wall Background" 
-            className="w-full h-full object-cover opacity-10 md:opacity-20"
-            loading="eager"
-            onError={(e) => {
-              console.error('Failed to load climbing wall image')
-              e.currentTarget.style.display = 'none'
-            }}
+            fill
+            className="object-cover opacity-10 md:opacity-20"
+            priority
           />
         </div>
         
@@ -330,7 +439,10 @@ export default function Home() {
             >
               View Schedule
             </button>
-            <button className="hero-button w-full sm:w-auto">
+            <button 
+              onClick={() => document.getElementById('donate-us')?.scrollIntoView({ behavior: 'smooth' })}
+              className="hero-button w-full sm:w-auto"
+            >
               Donate us
             </button>
           </div>
@@ -338,7 +450,7 @@ export default function Home() {
       </section>
 
       {/* Countdown Section */}
-      <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 relative overflow-hidden">
+      <section id="events" className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-orange-50 via-red-50 to-yellow-50 relative overflow-hidden">
         {/* Enhanced Background Pattern */}
         <div className="absolute inset-0 opacity-15">
           <div className="absolute top-10 left-10 w-20 h-20 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full animate-pulse"></div>
@@ -365,11 +477,12 @@ export default function Home() {
               <div className="relative group">
                 <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
                 <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-2xl border border-white/20">
-                  <img 
+                  <Image 
                     src="/ifsc-k-champioship-pcmc.svg" 
                     alt="IFSC Asian Kids Championship Logo" 
+                    width={160}
+                    height={160}
                     className="h-24 md:h-32 lg:h-40 w-auto mx-auto"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -464,6 +577,50 @@ export default function Home() {
               The Maharashtra Sport Climbing Association (MSCA) was established in 2025 with a mission to promote Sport Climbing across the state, in collaboration with infrastructural support from the Pimpri Chinchwad Municipal Corporation (PCMC). This visionary initiative is the brainchild of Mr. Surendra Shelke, an avid mountaineer and sport climber, and Mr. Sagar Palkar, an Everester and passionate advocate for adventure and sports among the youth. Mr. Shrikrishna Kaduskar has played a pivotal role in translating this vision into action on the ground, making significant strides in taking sport climbing to the next level.
             </p>
 
+            <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }} data-section="associations">
+              Our Associations
+            </h3>
+            <div className="bg-gray-50 rounded-lg p-8 mb-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div className="text-center">
+                  <a 
+                    href="https://www.indmount.org/IMF/welcome" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block hover:opacity-80 transition-opacity duration-200"
+                  >
+                    <Image 
+                      src="/imf-logo.svg" 
+                      alt="Indian Mountaineering Foundation Logo" 
+                      width={200} 
+                      height={120} 
+                      className="mx-auto mb-4 h-20 w-auto" 
+                    />
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-orange-600 transition-colors duration-200">Indian Mountaineering Foundation</h4>
+                    <p className="text-gray-600 text-sm">National governing body for mountaineering and sport climbing in India</p>
+                  </a>
+                </div>
+                <div className="text-center">
+                  <a 
+                    href="https://www.pcmcindia.gov.in/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block hover:opacity-80 transition-opacity duration-200"
+                  >
+                    <Image 
+                      src="/pcmc-logo.svg" 
+                      alt="Pimpri Chinchwad Municipal Corporation Logo" 
+                      width={200} 
+                      height={120} 
+                      className="mx-auto mb-4 h-20 w-auto" 
+                    />
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-orange-600 transition-colors duration-200">Pimpri Chinchwad Municipal Corporation</h4>
+                    <p className="text-gray-600 text-sm">Infrastructural support and partnership for sport climbing development</p>
+                  </a>
+                </div>
+              </div>
+            </div>
+
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
               Foundational Journey: From PCMA to MSCA
             </h3>
@@ -471,7 +628,7 @@ export default function Home() {
               The founders of MSCA — Mr. Surendra Shelke, Mr. Sagar Palkar, and Mr. Shrikrishna Kaduskar — were also the driving force behind the Pimpri Chinchwad Mountaineering Association (PCMA). PCMA proposed the idea of a climbing wall to PCMC in the late 1990s. In a landmark moment, Surendra Shelke and a few associates traveled all the way to Bikaner—not to compete, but to observe the West Zone Sport Climbing Championship firsthand, as part of their preparation for building a climbing wall in PCMC.
             </p>
             <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-8">
-              In 2000, their efforts bore fruit with the construction of the first-ever competition-standard climbing wall at Annasaheb Magar Stadium, built through PCMC's support. Surendra Shelke, affectionately known as Surya, was the backbone of this project. Without his relentless drive, this wall would not have materialized.
+              In 2000, their efforts bore fruit with the construction of the first-ever competition-standard climbing wall at Annasaheb Magar Stadium, built through PCMC&apos;s support. Surendra Shelke, affectionately known as Surya, was the backbone of this project. Without his relentless drive, this wall would not have materialized.
             </p>
 
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -484,7 +641,7 @@ export default function Home() {
               Though the proposal was submitted in 2005, it took five years of tireless follow-up to bring the Raje Shivaji Climbing Wall in Shivajinagar, Pune, to life. The journey was not easy—over 150 potential sites were reviewed, with many rejected due to resistance from locals and political representatives unfamiliar with the sport. In one instance, even after finalizing the land and gathering for a Bhumi Poojan (groundbreaking ceremony), opposition from locals forced the project to be scrapped at that location.
             </p>
             <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-              Nevertheless, perseverance prevailed. The wall was finally built in 2010 and became functional by 2012. It proudly hosted the first homologated speed climbing wall in India, and also introduced the country's first timing device for speed climbing, setting new national standards.
+              Nevertheless, perseverance prevailed. The wall was finally built in 2010 and became functional by 2012. It proudly hosted the first homologated speed climbing wall in India, and also introduced the country&apos;s first timing device for speed climbing, setting new national standards.
             </p>
           </div>
         </div>
@@ -549,8 +706,11 @@ export default function Home() {
                 </div>
               </div>
               
-              <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105">
-                Schedule a Visit
+              <button 
+                onClick={() => router.push('/facility')}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 transform hover:scale-105"
+              >
+                View our Facility
               </button>
             </div>
             
@@ -584,15 +744,12 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 mb-16">
             <div className="bg-white rounded-lg p-6 shadow-sm border">
               <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                <img 
+                <Image 
                   src="/lead-climbing-wall.svg" 
                   alt="Lead Climbing Wall" 
+                  width={200}
+                  height={200}
                   className="w-full h-full object-contain"
-                  loading="lazy"
-                  onError={(e) => {
-                    console.error('Failed to load lead climbing wall image')
-                    e.currentTarget.style.display = 'none'
-                  }}
                 />
               </div>
               <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -605,15 +762,12 @@ export default function Home() {
             
             <div className="bg-white rounded-lg p-6 shadow-sm border">
               <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                <img 
+                <Image 
                   src="/speed-and-lead.svg" 
                   alt="Speed Climbing Wall" 
+                  width={200}
+                  height={200}
                   className="w-full h-full object-contain"
-                  loading="lazy"
-                  onError={(e) => {
-                    console.error('Failed to load speed climbing wall image')
-                    e.currentTarget.style.display = 'none'
-                  }}
                 />
               </div>
               <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -626,15 +780,12 @@ export default function Home() {
             
             <div className="bg-white rounded-lg p-6 shadow-sm border">
               <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                <img 
+                <Image 
                   src="/boulder-left.svg" 
                   alt="Boulder Climbing Area" 
+                  width={200}
+                  height={200}
                   className="w-full h-full object-contain"
-                  loading="lazy"
-                  onError={(e) => {
-                    console.error('Failed to load boulder climbing image')
-                    e.currentTarget.style.display = 'none'
-                  }}
                 />
               </div>
               <h4 className="text-lg font-bold text-black mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -646,16 +797,49 @@ export default function Home() {
             </div>
           </div>
 
+          {/* Social Media */}
+          <div className="text-center mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Follow Our Journey
+            </h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Stay updated with our latest climbing events, training sessions, and community achievements.
+            </p>
+            <div className="flex justify-center space-x-6">
+              <a href="https://www.instagram.com/msca_climbingwallpcmc/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center hover:bg-orange-200 transition-colors duration-200 group">
+                <svg className="w-6 h-6 text-orange-600 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61582002545421" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center hover:bg-orange-200 transition-colors duration-200 group">
+                <svg className="w-6 h-6 text-orange-600 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@MSCAOFFICIAL" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center hover:bg-orange-200 transition-colors duration-200 group">
+                <svg className="w-6 h-6 text-orange-600 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
           {/* Call to Action */}
           <div className="text-center bg-gradient-to-r from-orange-500 to-red-600 rounded-2xl p-8 md:p-12 text-white">
             <p className="text-orange-100 mb-6 text-lg">
-              Visit our world-class climbing wall and see why we're training India's future Olympic champions.
+              Visit our world-class climbing wall and see why we&apos;re training India&apos;s future Olympic champions.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105">
-                Book a Tour
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="bg-white text-orange-600 font-bold py-3 px-8 rounded-lg hover:bg-orange-50 transition-all duration-300 transform hover:scale-105"
+              >
+                Schedule a visit
               </button>
-              <button className="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105">
+              <button 
+                onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+                className="border-2 border-white text-white font-bold py-3 px-8 rounded-lg hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105"
+              >
                 Contact Us
               </button>
             </div>
@@ -676,7 +860,7 @@ export default function Home() {
           {/* Content */}
           <div className="text-center">
             <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed">
-              Be part of India's premier climbing community and help us build the future of sport climbing.
+              Be part of India&apos;s premier climbing community and help us build the future of sport climbing.
             </p>
             <p className="text-gray-600 text-lg max-w-3xl mx-auto leading-relaxed mt-4">
               Join hundreds of climbers who have already discovered their passion for climbing with MSCA.
@@ -699,9 +883,11 @@ export default function Home() {
                       isToggleOn ? 'transform translate-x-24' : 'transform translate-x-0'
                     }`}
                   >
-                    <img 
+                    <Image 
                       src={isToggleOn ? "/climb-icon.svg" : "/sleep-icon.svg"} 
                       alt={isToggleOn ? "Climb Icon" : "Sleep Icon"} 
+                      width={48}
+                      height={48}
                       className="w-12 h-12"
                     />
                   </div>
@@ -728,7 +914,7 @@ export default function Home() {
           {/* Main Content */}
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-8">
-              In 2010, with news of the Maharashtra Government formulating a Sports Policy, the PCMA saw a major opportunity. While many adventure groups submitted fragmented requests for support (tickets, expedition funds, etc.), PCMA took a different route. After first understanding the government's intent, two detailed presentations were submitted:
+              In 2010, with news of the Maharashtra Government formulating a Sports Policy, the PCMA saw a major opportunity. While many adventure groups submitted fragmented requests for support (tickets, expedition funds, etc.), PCMA took a different route. After first understanding the government&apos;s intent, two detailed presentations were submitted:
             </p>
 
             <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm border-l-4 border-orange-500 mb-8">
@@ -850,11 +1036,12 @@ export default function Home() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-0 group-hover:opacity-75 transition duration-500"></div>
                   <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-200 group-hover:shadow-xl transition-all duration-300">
                     <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-200 group-hover:border-orange-400 transition-colors duration-300">
-                      <img 
+                      <Image 
                         src="/amol-jogdand.svg" 
                         alt="Amol Jogdand" 
+                        width={128}
+                        height={128}
                         className="w-full h-full object-cover"
-                        loading="lazy"
                       />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -876,11 +1063,12 @@ export default function Home() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-0 group-hover:opacity-75 transition duration-500"></div>
                   <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-200 group-hover:shadow-xl transition-all duration-300">
                     <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-200 group-hover:border-orange-400 transition-colors duration-300">
-                      <img 
+                      <Image 
                         src="/mantu-mantri.svg" 
                         alt="Mantu Mantri" 
+                        width={128}
+                        height={128}
                         className="w-full h-full object-cover"
-                        loading="lazy"
                       />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -902,11 +1090,12 @@ export default function Home() {
                   <div className="absolute -inset-4 bg-gradient-to-r from-orange-400 via-red-500 to-yellow-400 rounded-full blur-lg opacity-0 group-hover:opacity-75 transition duration-500"></div>
                   <div className="relative bg-white rounded-2xl p-6 shadow-lg border border-gray-200 group-hover:shadow-xl transition-all duration-300">
                     <div className="w-32 h-32 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-200 group-hover:border-orange-400 transition-colors duration-300">
-                      <img 
+                      <Image 
                         src="/irfan-shaikh.svg" 
                         alt="Irfan Shaikh" 
+                        width={128}
+                        height={128}
                         className="w-full h-full object-cover"
-                        loading="lazy"
                       />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -928,7 +1117,7 @@ export default function Home() {
       </section>
 
       {/* Shiv Chhatrapati Awardees Section */}
-      <section className="py-16 md:py-20 lg:py-24 bg-white">
+      <section id="achievements" className="py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-16 md:mb-20">
@@ -941,9 +1130,9 @@ export default function Home() {
               </GradientText>
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Four homegrown champions honored with Maharashtra's highest sporting accolade
+              Four homegrown champions honored with Maharashtra&apos;s highest sporting accolade
             </p>
-          </div>
+        </div>
 
           {/* Awardees List */}
           <div className="space-y-16">
@@ -966,11 +1155,12 @@ export default function Home() {
               </div>
               <div className="flex-shrink-0">
                 <div className="w-80 h-96 rounded-lg overflow-hidden shadow-lg">
-                  <img 
+                  <Image 
                     src="/hritik-marne.svg" 
                     alt="Hritik Marne aka Nanya" 
+                    width={320}
+                    height={384}
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -994,11 +1184,12 @@ export default function Home() {
               </div>
               <div className="flex-shrink-0">
                 <div className="w-80 h-80 rounded-lg overflow-hidden shadow-lg">
-                  <img 
+                  <Image 
                     src="/shreya-nankar.svg" 
                     alt="Shreya Nankar" 
+                    width={320}
+                    height={320}
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -1022,11 +1213,12 @@ export default function Home() {
               </div>
               <div className="flex-shrink-0">
                 <div className="w-80 h-80 rounded-lg overflow-hidden shadow-lg">
-                  <img 
+                  <Image 
                     src="/sahil-khan.svg" 
                     alt="Sahil Khan" 
+                    width={320}
+                    height={320}
                     className="w-full h-full object-cover"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -1050,11 +1242,12 @@ export default function Home() {
               </div>
               <div className="flex-shrink-0">
                 <div className="w-80 h-96 rounded-lg overflow-hidden shadow-lg">
-                  <img 
+                  <Image 
                     src="/saniya-shaikh.svg" 
                     alt="Saniya Shaikh" 
+                    width={320}
+                    height={384}
                     className="w-full h-full object-contain"
-                    loading="lazy"
                   />
                 </div>
               </div>
@@ -1065,7 +1258,7 @@ export default function Home() {
           <div className="text-center mt-16 md:mt-20">
             <div className="max-w-4xl mx-auto">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Maharashtra's Highest Sporting Honor
+                Maharashtra&apos;s Highest Sporting Honor
               </h3>
               <p className="text-lg md:text-xl leading-relaxed text-gray-700">
                 These four homegrown champions represent the pinnacle of climbing excellence in Maharashtra, 
@@ -1076,9 +1269,32 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+       </section>
 
-      {/* Empowering the Underprivileged Section */}
+       {/* Our Athletes Section */}
+       <section id="our-athletes" className="py-16 md:py-20 lg:py-24 bg-white">
+         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-12 md:mb-16">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+               Our Athletes
+             </h2>
+             <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+               Celebrating the remarkable achievements of our climbing champions who have brought glory to Maharashtra and India through their dedication, perseverance, and exceptional talent in sport climbing.
+             </p>
+           </div>
+
+           <div className="text-center">
+             <button 
+               onClick={() => router.push('/our-athletes')}
+               className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md"
+             >
+               View All Athletes & Medals
+             </button>
+           </div>
+         </div>
+       </section>
+
+       {/* Empowering the Underprivileged Section */}
       <section className="py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
@@ -1089,7 +1305,7 @@ export default function Home() {
               <p className="text-lg md:text-xl leading-relaxed text-gray-700">
                 A unique and heartwarming aspect of this journey is the socio-economic background 
                 of many trained athletes. A significant number of them come from underprivileged 
-                communities and urban slums. Through the association's support, they have risen not 
+                communities and urban slums. Through the association&apos;s support, they have risen not 
                 only as athletes but have now become coaches, trainers, and officials — emerging as 
                 leaders of the next generation.
               </p>
@@ -1107,7 +1323,7 @@ export default function Home() {
                 The World-Class PCMC Climbing Wall & Future Vision
               </h2>
               <p className="text-lg md:text-xl leading-relaxed text-gray-700 mb-6">
-                The most recent milestone is the erection of the world-class climbing wall at PCMC's 
+                The most recent milestone is the erection of the world-class climbing wall at PCMC&apos;s 
                 Yoga Park, a result of untiring efforts by Surendra Shelke and Shrikrishna Kaduskar. 
                 Regarded as the best in India and among the top in the world, this facility marks a 
                 new era in Indian climbing infrastructure.
@@ -1115,7 +1331,7 @@ export default function Home() {
               <p className="text-lg md:text-xl leading-relaxed text-gray-700">
                 Recognizing the potential, the MSCA has embarked on an ambitious journey to 
                 establish a structured Sport Climbing Academy, with the ultimate aim of producing 
-                Olympic medalists by 2036 — a vision aligned with government of India's long-term 
+                Olympic medalists by 2036 — a vision aligned with government of India&apos;s long-term 
                 sports development goals.
               </p>
             </div>
@@ -1179,7 +1395,7 @@ export default function Home() {
               <div className="lg:w-2/3">
                 <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-2xl p-8 border-l-4 border-orange-500">
                   <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    Founders' Early Vision
+                    Founders&apos; Early Vision
                   </h3>
                   <p className="text-gray-700 leading-relaxed mb-6 text-lg">
                     Pimpri Chinchwad Mountaineering Association (PCMA) proposes the idea of a climbing wall to PCMC (Pimpri Chinchwad Municipal Corporation). Surendra Shelke (Surya), Sagar Palkar (Everester & youth advocate), and Shrikrishna Kaduskar are the driving forces.
@@ -1187,7 +1403,7 @@ export default function Home() {
                   <div className="bg-white rounded-lg p-4 border border-orange-200">
                     <h4 className="font-semibold text-orange-700 mb-2">Exploratory Step:</h4>
                     <p className="text-gray-600">
-                      Surya and associates travel to Bikaner to observe the West Zone Sport Climbing Championship, studying infrastructure and format before building PCMC's wall.
+                      Surya and associates travel to Bikaner to observe the West Zone Sport Climbing Championship, studying infrastructure and format before building PCMC&apos;s wall.
                     </p>
                   </div>
                 </div>
@@ -1208,7 +1424,7 @@ export default function Home() {
                     First Competition Wall in PCMC
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-lg">
-                    With PCMC's infrastructural support, the first-ever competition-standard climbing wall is built at Annasaheb Magar Stadium. Surendra Shelke (Surya) is the backbone of the project — without his persistence, the wall wouldn't have materialized.
+                    With PCMC&apos;s infrastructural support, the first-ever competition-standard climbing wall is built at Annasaheb Magar Stadium. Surendra Shelke (Surya) is the backbone of the project — without his persistence, the wall wouldn&apos;t have materialized.
                   </p>
                 </div>
               </div>
@@ -1253,7 +1469,7 @@ export default function Home() {
                   <div className="bg-white rounded-lg p-4 border border-red-200">
                     <h4 className="font-semibold text-red-700 mb-2">Pune Expansion:</h4>
                     <p className="text-gray-600">
-                      The championship's success inspires PCMA to propose a second climbing wall in Pune (Raje Shivaji Climbing Wall, Shivajinagar).
+                      The championship&apos;s success inspires PCMA to propose a second climbing wall in Pune (Raje Shivaji Climbing Wall, Shivajinagar).
                     </p>
                   </div>
                 </div>
@@ -1330,7 +1546,7 @@ export default function Home() {
                     Policy Milestone
                   </h3>
                   <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                    The 2012 Maharashtra State Sports Policy incorporates PCMA's proposals with a separate chapter on Adventure Sports.
+                    The 2012 Maharashtra State Sports Policy incorporates PCMA&apos;s proposals with a separate chapter on Adventure Sports.
                   </p>
                   <div className="bg-white rounded-lg p-4 border border-yellow-200">
                     <h4 className="font-semibold text-yellow-700 mb-2">Historic Acknowledgment:</h4>
@@ -1386,7 +1602,7 @@ export default function Home() {
                     World-Class Yoga Park Wall
                   </h3>
                   <p className="text-gray-700 leading-relaxed text-lg">
-                    A state-of-the-art climbing wall is erected at PCMC's Yoga Park, thanks to Surya's and Kaduskar's tireless efforts. Recognized as the best in India and among the top in the world.
+                    A state-of-the-art climbing wall is erected at PCMC&apos;s Yoga Park, thanks to Surya&apos;s and Kaduskar&apos;s tireless efforts. Recognized as the best in India and among the top in the world.
                   </p>
                 </div>
               </div>
@@ -1406,7 +1622,7 @@ export default function Home() {
                     MSCA Formation & Olympic Vision
                   </h3>
                   <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                    MSCA established with 20-year strategic partnership with PCMC. Ambitious target: producing Olympic medalists by 2036, aligned with Government of India's long-term sports development goals.
+                    MSCA established with 20-year strategic partnership with PCMC. Ambitious target: producing Olympic medalists by 2036, aligned with Government of India&apos;s long-term sports development goals.
                   </p>
                   <div className="bg-white rounded-lg p-4 border border-blue-200">
                     <h4 className="font-semibold text-blue-700 mb-2">Strategic Partnership:</h4>
@@ -1422,6 +1638,440 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Legacy and Vision Section */}
+      <section className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              A Legacy of Excellence
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              This legacy and structured development illustrate MSCA&apos;s unmatched credibility, expertise, and vision in the field of Sport Climbing.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 mb-12">
+            <div className="space-y-6">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                The team has:
+              </h3>
+              <div className="space-y-4">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 text-lg">Nurtured champions from marginalized backgrounds</p>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 text-lg">Created a national ecosystem of coaches and officials</p>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 text-lg">Influenced state sports policy</p>
+                </div>
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center mt-1">
+                    <svg className="w-3 h-3 text-white" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <p className="text-gray-700 text-lg">Built world-class infrastructure</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-200">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Our Vision
+              </h3>
+              <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                The journey so far is a blueprint for sustainable, inclusive, and high-performance sport development.
+              </p>
+              <div className="bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl p-6 border-l-4 border-orange-500">
+                <p className="text-gray-800 text-lg font-semibold">
+                  With the foundation laid and vision aligned, MSCA is fully prepared to take Indian Sport Climbing to Olympic glory by 2036.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Donate Us Section */}
+      <section id="donate-us" className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-orange-50 to-red-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Donate Us
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Support our mission to promote sport climbing and train future Olympic champions
+            </p>
+          </div>
+
+          {/* Bank Details Card */}
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-200 p-8 md:p-12">
+            <div className="text-center mb-8">
+              <div className="w-20 h-20 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Bank Transfer Details
+              </h3>
+              <p className="text-gray-600">Make a direct bank transfer to support our cause</p>
+            </div>
+
+            {/* Bank Details Grid */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <div className="space-y-4">
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Account Holder Name</label>
+                  <p className="text-lg text-gray-900 font-medium">Maharashtra Sport Climbing Association</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Bank Name</label>
+                  <p className="text-lg text-gray-900 font-medium">Kotak Mahindra Bank</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Branch</label>
+                  <p className="text-lg text-gray-900 font-medium">Nigdi</p>
+                </div>
+                
+                <div className="bg-gray-50 rounded-lg p-4">
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Account Type</label>
+                  <p className="text-lg text-gray-900 font-medium">Saving Account</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                  <label className="block text-sm font-semibold text-orange-700 mb-2">Account Number</label>
+                  <p className="text-xl text-orange-900 font-bold">6550787965</p>
+                </div>
+                
+                <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                  <label className="block text-sm font-semibold text-orange-700 mb-2">CRN Number</label>
+                  <p className="text-xl text-orange-900 font-bold">965632024</p>
+                </div>
+                
+                <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                  <label className="block text-sm font-semibold text-orange-700 mb-2">IFSC Code</label>
+                  <p className="text-xl text-orange-900 font-bold">KKBK0001757</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Copy Button */}
+            <div className="text-center">
+              <button 
+                onClick={() => {
+                  const bankDetails = `Account Holder: Maharashtra Sport Climbing Association
+Bank: Kotak Mahindra Bank
+Branch: Nigdi
+Account Type: Saving Account
+Account Number: 6550787965
+CRN Number: 965632024
+IFSC Code: KKBK0001757`;
+                  navigator.clipboard.writeText(bankDetails);
+                  alert('Bank details copied to clipboard!');
+                }}
+                className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+              >
+                Copy Bank Details
+              </button>
+            </div>
+
+            {/* Additional Information */}
+            <div className="mt-8 text-center">
+              <div className="bg-gradient-to-r from-orange-100 to-red-100 rounded-lg p-6 border border-orange-200">
+                <h4 className="text-lg font-semibold text-gray-900 mb-3" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Your Support Matters
+                </h4>
+                <p className="text-gray-700 leading-relaxed">
+                  Every contribution helps us train athletes, maintain world-class facilities, and work towards our Olympic vision. 
+                  Your donation directly supports the development of sport climbing in Maharashtra and India.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Us Section */}
+      <section id="contact" className="py-16 md:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Contact Us
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
+              Get in touch with us for training, events, or any inquiries about sport climbing
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Contact Information */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                  Get in Touch
+                </h3>
+                <p className="text-gray-700 leading-relaxed text-lg mb-8">
+                  We&apos;re here to help you start your climbing journey or answer any questions about our programs and facilities.
+                </p>
+              </div>
+
+              {/* Contact Details */}
+              <div className="space-y-6">
+                {/* Address */}
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Address</h4>
+                    <p className="text-gray-700">
+                      <a 
+                        href="https://www.google.com/maps?sca_esv=c558734bb1fd5d24&sxsrf=AE3TifNZQ5RZIg2Ilo25r4mazQhuE5xSCA:1760349307727&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnBjbWMgY2xpbWJpbmcgd2FsbCoCCAAyBxAjGLADGCcyCBAAGIAEGLADMgkQABiwAxgIGB4yCxAAGIAEGLADGKIEMgsQABiABBiwAxiiBDIIEAAYsAMY7wVI-gZQAFgAcAF4AJABAJgBAKABAKoBALgBAcgBAJgCAaACA5gDAIgGAZAGBpIHATGgBwCyBwC4BwDCBwMwLjHIBwI&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KdvaMkAAucI7MQmzsG-oVGMo&daddr=HRW4%2B82X,+Sai+Nagar+Park,+Pimple+Saudagar,+Pimpri-Chinchwad,+Maharashtra+411027" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-orange-600 transition-colors duration-200"
+                      >
+                        Climbing Wall, Yoga Park<br />
+                        HRW4+82X, Sai Nagar Park<br />
+                        Pimple Saudagar, Pimpri-Chinchwad<br />
+                        Maharashtra 411027
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Phone</h4>
+                    <p className="text-gray-700">
+                      <a href="tel:+919579736439" className="hover:text-orange-600 transition-colors duration-200">
+                        +91 95797 36439
+                      </a><br />
+                      <a href="tel:+919822032956" className="hover:text-orange-600 transition-colors duration-200">
+                        +91 98220 32956
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Email</h4>
+                    <p className="text-gray-700">
+                      <a href="mailto:info@msca.org.in" className="hover:text-orange-600 transition-colors duration-200">
+                        info@msca.org.in
+                      </a><br />
+                      <a href="mailto:contact@msca.org.in" className="hover:text-orange-600 transition-colors duration-200">
+                        contact@msca.org.in
+                      </a>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Hours */}
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
+                    <svg className="w-6 h-6 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-2">Training Hours</h4>
+                    <p className="text-gray-700">
+                      Monday - Friday: 6:00 AM - 9:00 PM<br />
+                      Saturday - Sunday: 7:00 AM - 8:00 PM<br />
+                      <span className="text-orange-600 font-medium">24/7 Access for Members</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Social Media */}
+              <div className="pt-6">
+                <h4 className="text-lg font-semibold text-gray-900 mb-4">Follow Us</h4>
+                <div className="flex space-x-4">
+                  <a href="https://www.instagram.com/msca_climbingwallpcmc/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center hover:bg-orange-200 transition-colors duration-200">
+                    <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.facebook.com/profile.php?id=61582002545421" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center hover:bg-orange-200 transition-colors duration-200">
+                    <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                  </a>
+                  <a href="https://www.youtube.com/@MSCAOFFICIAL" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center hover:bg-orange-200 transition-colors duration-200">
+                    <svg className="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <div className="bg-gray-50 rounded-2xl p-8 md:p-10">
+              <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Send us a Message
+              </h3>
+              <form className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                      placeholder="Enter your first name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      required
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                      placeholder="Enter your last name"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Email Address *
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                    placeholder="Enter your email address"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                    placeholder="Enter your phone number"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Subject *
+                  </label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="training">Training Inquiry</option>
+                    <option value="membership">Membership</option>
+                    <option value="events">Events</option>
+                    <option value="coaching">Coaching</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200 resize-none"
+                    placeholder="Tell us how we can help you..."
+                  ></textarea>
+                </div>
+
+                <button
+                  type="submit"
+                  className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                >
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+
+          {/* Map Section */}
+          <div className="mt-16">
+            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Find Us
+            </h3>
+            <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
+              <div className="text-center">
+                <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                <p className="text-gray-600 text-lg font-medium">Interactive Map Coming Soon</p>
+                <p className="text-gray-500">Climbing Wall, Yoga Park, HRW4+82X, Sai Nagar Park, Pimple Saudagar, Pimpri-Chinchwad, Maharashtra 411027</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="bg-gray-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
@@ -1429,11 +2079,12 @@ export default function Home() {
             {/* Logo and Description */}
             <div className="lg:col-span-2">
               <div className="flex items-center mb-4">
-                <img 
+                <Image 
                   src="/msca-logo-english.svg" 
                   alt="MSCA Logo" 
+                  width={120}
+                  height={48}
                   className="h-12 w-auto mr-4"
-                  loading="lazy"
                 />
                 <div>
                   <h3 className="text-xl font-bold" style={{ fontFamily: "'Playfair Display', serif" }}>
@@ -1446,27 +2097,22 @@ export default function Home() {
                 Promoting Sport Climbing across Maharashtra with world-class facilities and Olympic-level training programs.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="https://www.instagram.com/msca_climbingwallpcmc/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="https://www.facebook.com/profile.php?id=61582002545421" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/>
+                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
+                <a href="https://www.youtube.com/@MSCAOFFICIAL" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-200">
                   <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.746-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/>
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                   </svg>
                 </a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.007 0C5.373 0 .007 5.373.007 12s5.366 12 12 12 12-5.373 12-12S18.641.007 12.007.007zM8.5 18.5c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5 2.5 1 2.5 2.5-1 2.5-2.5 2.5zm7 0c-1.5 0-2.5-1-2.5-2.5s1-2.5 2.5-2.5 2.5 1 2.5 2.5-1 2.5-2.5 2.5z"/>
-                  </svg>
-                </a>
-              </div>
+    </div>
             </div>
 
             {/* Quick Links */}
@@ -1495,8 +2141,46 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                   <div>
-                    <p className="text-gray-300 text-sm">Yoga Park, PCMC</p>
-                    <p className="text-gray-300 text-sm">Pimpri Chinchwad, Maharashtra</p>
+                    <p className="text-gray-300 text-sm">
+                      <a 
+                        href="https://www.google.com/maps?sca_esv=c558734bb1fd5d24&sxsrf=AE3TifNZQ5RZIg2Ilo25r4mazQhuE5xSCA:1760349307727&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnBjbWMgY2xpbWJpbmcgd2FsbCoCCAAyBxAjGLADGCcyCBAAGIAEGLADMgkQABiwAxgIGB4yCxAAGIAEGLADGKIEMgsQABiABBiwAxiiBDIIEAAYsAMY7wVI-gZQAFgAcAF4AJABAJgBAKABAKoBALgBAcgBAJgCAaACA5gDAIgGAZAGBpIHATGgBwCyBwC4BwDCBwMwLjHIBwI&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KdvaMkAAucI7MQmzsG-oVGMo&daddr=HRW4%2B82X,+Sai+Nagar+Park,+Pimple+Saudagar,+Pimpri-Chinchwad,+Maharashtra+411027" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        Climbing Wall, Yoga Park
+                      </a>
+                    </p>
+                    <p className="text-gray-300 text-sm">
+                      <a 
+                        href="https://www.google.com/maps?sca_esv=c558734bb1fd5d24&sxsrf=AE3TifNZQ5RZIg2Ilo25r4mazQhuE5xSCA:1760349307727&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnBjbWMgY2xpbWJpbmcgd2FsbCoCCAAyBxAjGLADGCcyCBAAGIAEGLADMgkQABiwAxgIGB4yCxAAGIAEGLADGKIEMgsQABiABBiwAxiiBDIIEAAYsAMY7wVI-gZQAFgAcAF4AJABAJgBAKABAKoBALgBAcgBAJgCAaACA5gDAIgGAZAGBpIHATGgBwCyBwC4BwDCBwMwLjHIBwI&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KdvaMkAAucI7MQmzsG-oVGMo&daddr=HRW4%2B82X,+Sai+Nagar+Park,+Pimple+Saudagar,+Pimpri-Chinchwad,+Maharashtra+411027" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        HRW4+82X, Sai Nagar Park
+                      </a>
+                    </p>
+                    <p className="text-gray-300 text-sm">
+                      <a 
+                        href="https://www.google.com/maps?sca_esv=c558734bb1fd5d24&sxsrf=AE3TifNZQ5RZIg2Ilo25r4mazQhuE5xSCA:1760349307727&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnBjbWMgY2xpbWJpbmcgd2FsbCoCCAAyBxAjGLADGCcyCBAAGIAEGLADMgkQABiwAxgIGB4yCxAAGIAEGLADGKIEMgsQABiABBiwAxiiBDIIEAAYsAMY7wVI-gZQAFgAcAF4AJABAJgBAKABAKoBALgBAcgBAJgCAaACA5gDAIgGAZAGBpIHATGgBwCyBwC4BwDCBwMwLjHIBwI&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KdvaMkAAucI7MQmzsG-oVGMo&daddr=HRW4%2B82X,+Sai+Nagar+Park,+Pimple+Saudagar,+Pimpri-Chinchwad,+Maharashtra+411027" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        Pimple Saudagar, Pimpri-Chinchwad
+                      </a>
+                    </p>
+                    <p className="text-gray-300 text-sm">
+                      <a 
+                        href="https://www.google.com/maps?sca_esv=c558734bb1fd5d24&sxsrf=AE3TifNZQ5RZIg2Ilo25r4mazQhuE5xSCA:1760349307727&gs_lp=Egxnd3Mtd2l6LXNlcnAiEnBjbWMgY2xpbWJpbmcgd2FsbCoCCAAyBxAjGLADGCcyCBAAGIAEGLADMgkQABiwAxgIGB4yCxAAGIAEGLADGKIEMgsQABiABBiwAxiiBDIIEAAYsAMY7wVI-gZQAFgAcAF4AJABAJgBAKABAKoBALgBAcgBAJgCAaACA5gDAIgGAZAGBpIHATGgBwCyBwC4BwDCBwMwLjHIBwI&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KdvaMkAAucI7MQmzsG-oVGMo&daddr=HRW4%2B82X,+Sai+Nagar+Park,+Pimple+Saudagar,+Pimpri-Chinchwad,+Maharashtra+411027" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="hover:text-white transition-colors duration-200"
+                      >
+                        Maharashtra 411027
+                      </a>
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -1504,8 +2188,8 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
                   <div>
-                    <p className="text-gray-300 text-sm">+91 98765 43210</p>
-                    <p className="text-gray-300 text-sm">+91 98765 43211</p>
+                    <p className="text-gray-300 text-sm">+91 95797 36439</p>
+                    <p className="text-gray-300 text-sm">+91 98220 32956</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -1536,6 +2220,9 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
       </main>
   )
 }

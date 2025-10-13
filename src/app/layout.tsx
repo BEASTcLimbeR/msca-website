@@ -25,6 +25,10 @@ export const metadata: Metadata = {
   description: "Official website of Maharashtra Sports Climbing Association. Home to India's Olympic-level climbing wall facility, training future champions and promoting climbing excellence.",
   keywords: "climbing, sports, Maharashtra, India, Olympic, climbing wall, training, association",
   authors: [{ name: "Maharashtra Sports Climbing Association" }],
+  icons: {
+    icon: { url: "/msca-logo-marathi.svg", type: "image/svg+xml" },
+    apple: { url: "/msca-logo-marathi.svg", type: "image/svg+xml" }
+  },
   openGraph: {
     title: "Maharashtra Sports Climbing Association",
     description: "India's Premier Olympic-Level Climbing Facility",
@@ -40,6 +44,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Favicon */}
+        <link rel="icon" href="/msca-logo-marathi.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/msca-logo-marathi.svg" />
+        
         {/* Preload critical images */}
         <link rel="preload" href="/msca-logo-english.svg" as="image" type="image/svg+xml" />
         <link rel="preload" href="/speed-and-lead.svg" as="image" type="image/svg+xml" />
