@@ -216,7 +216,7 @@ export default function Home() {
                   }}
                   className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
                 >
-                  Our Facility
+                  Facility
                 </a>
                 <a 
                   href="#events" 
@@ -339,7 +339,7 @@ export default function Home() {
                 }}
                 className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
-                Our Facility
+                Facility
               </a>
               <a 
                 href="#events" 
@@ -596,12 +596,32 @@ export default function Home() {
 
           {/* Event Details */}
           <div className="text-center">
-            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
-              <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <span className="text-gray-800 font-semibold">November 1, 2025</span>
+            <div className="flex flex-col items-center space-y-3">
+              <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
+                <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span className="text-gray-800 font-semibold">November 1, 2025</span>
+              </div>
+              <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
+                <span className="text-gray-800 font-semibold">1st November to 4th November 2025</span>
+              </div>
             </div>
+          </div>
+
+          {/* Instagram Promotional Post */}
+          <div className="text-center mt-6">
+            <a 
+              href="https://www.instagram.com/p/DPwZkmuAZfU/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center space-x-2 bg-gradient-to-r from-pink-500 to-purple-600 hover:from-pink-600 hover:to-purple-700 text-white font-semibold py-3 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>View our Instagram post</span>
+            </a>
           </div>
 
           {/* View Previous Events Button */}
@@ -639,25 +659,7 @@ export default function Home() {
               Our Associations
             </h3>
             <div className="bg-gray-50 rounded-lg p-8 mb-8">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div className="text-center">
-                  <a 
-                    href="https://www.indmount.org/IMF/welcome" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block hover:opacity-80 transition-opacity duration-200"
-                  >
-                    <Image 
-                      src="/imf-logo.svg" 
-                      alt="Indian Mountaineering Foundation Logo" 
-                      width={200} 
-                      height={120} 
-                      className="mx-auto mb-4 h-20 w-auto" 
-                    />
-                    <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-orange-600 transition-colors duration-200">Indian Mountaineering Foundation</h4>
-                    <p className="text-gray-600 text-sm">National governing body for mountaineering and sport climbing in India</p>
-                  </a>
-                </div>
+              <div className="flex justify-center">
                 <div className="text-center">
                   <a 
                     href="https://www.pcmcindia.gov.in/" 
@@ -705,13 +707,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Our Facility Section */}
+      {/* Facility Section */}
       <section id="facility" className="py-16 md:py-20 lg:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-4 md:mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Our Facility
+              Facility
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               State-of-the-art climbing wall designed to international standards
@@ -719,8 +721,8 @@ export default function Home() {
           </div>
 
           {/* Main Content Grid */}
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
-            {/* Left Column - Facility Description */}
+          <div className="max-w-4xl mx-auto mb-16">
+            {/* Facility Description */}
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
                 PCMC Yoga Park Facility
@@ -736,19 +738,19 @@ export default function Home() {
                   <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
                     <span className="text-white text-sm">✓</span>
                   </div>
-                  <span className="text-gray-700 text-base md:text-lg">15-meter lead climbing wall</span>
+                  <span className="text-gray-700 text-base md:text-lg">Lead climbing wall</span>
                 </div>
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
                     <span className="text-white text-sm">✓</span>
                   </div>
-                  <span className="text-gray-700 text-base md:text-lg">Speed climbing lane</span>
+                  <span className="text-gray-700 text-base md:text-lg">Speed climbing 4-lane wall</span>
                 </div>
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
                     <span className="text-white text-sm">✓</span>
                   </div>
-                  <span className="text-gray-700 text-base md:text-lg">Boulder climbing area</span>
+                  <span className="text-gray-700 text-base md:text-lg">Boulder climbing wall</span>
                 </div>
                 <div className="flex items-center">
                   <div className="w-6 h-6 bg-orange-500 rounded-full mr-4 flex items-center justify-center">
@@ -772,30 +774,6 @@ export default function Home() {
               </button>
             </div>
             
-            {/* Right Column - Facility Specifications */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl p-8 text-white">
-              <h4 className="text-2xl font-bold mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Facility Specifications
-              </h4>
-              <div className="grid grid-cols-2 gap-6">
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">15m</div>
-                  <div className="text-gray-300">Wall Height</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">12m</div>
-                  <div className="text-gray-300">Wall Width</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">3</div>
-                  <div className="text-gray-300">Disciplines</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-orange-400">24/7</div>
-                  <div className="text-gray-300">Access</div>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Climbing Wall Images Grid */}
@@ -1272,7 +1250,7 @@ export default function Home() {
               <div className="flex-shrink-0">
                 <div className="w-80 h-80 rounded-lg overflow-hidden shadow-lg">
                   <Image 
-                    src="/sahil-khan.svg" 
+                    src="/photo-award.jpg" 
                     alt="Sahil Khan" 
                     width={320}
                     height={320}
@@ -2234,7 +2212,7 @@ IFSC Code: KKBK0001757`;
               </h4>
               <ul className="space-y-3">
                 <li><a href="#about" className="text-gray-300 hover:text-white transition-colors duration-200">About Us</a></li>
-                <li><a href="#facility" className="text-gray-300 hover:text-white transition-colors duration-200">Our Facility</a></li>
+                <li><a href="#facility" className="text-gray-300 hover:text-white transition-colors duration-200">Facility</a></li>
                 <li><a href="#join-us" className="text-gray-300 hover:text-white transition-colors duration-200">Join Us</a></li>
                 <li><a href="/schedule" className="text-gray-300 hover:text-white transition-colors duration-200">View Schedule</a></li>
                 <li><a href="/climbing" className="text-gray-300 hover:text-white transition-colors duration-200">Mobile App</a></li>

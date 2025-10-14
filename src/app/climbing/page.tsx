@@ -22,6 +22,17 @@ export default function ClimbingPage() {
                 }}
                 loading="lazy"
               />
+              {/* Coming Soon Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-white/90 backdrop-blur-sm rounded-2xl px-6 py-4 shadow-lg border border-gray-200">
+                  <h3 className="text-2xl font-bold text-gray-800 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Coming Soon
+                  </h3>
+                  <p className="text-sm text-gray-600 text-center mt-1">
+                    Mobile App
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
