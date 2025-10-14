@@ -675,7 +675,7 @@ export default function Home() {
                       className="mx-auto mb-4 h-20 w-auto" 
                     />
                     <h4 className="text-lg font-semibold text-gray-900 mb-2 hover:text-orange-600 transition-colors duration-200">Pimpri Chinchwad Municipal Corporation</h4>
-                    <p className="text-gray-600 text-sm">Infrastructural support and partnership for sport climbing development</p>
+                    <p className="text-gray-600 text-sm">Infrastructural support and partnership for sport climbing promotion</p>
                   </a>
                 </div>
               </div>
