@@ -26,9 +26,15 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const createTransporter = () => {
   return nodemailer.createTransporter({
     service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false, // true for 465, false for other ports
     auth: {
       user: process.env.EMAIL_USER, // infomymsca@gmail.com
       pass: process.env.EMAIL_PASS  // App password
+    },
+    tls: {
+      rejectUnauthorized: false
     }
   });
 };
@@ -108,8 +114,18 @@ app.post('/api/contact', async (req, res) => {
     };
 
     // Send email
+    console.log('📧 Attempting to send email...');
+    console.log('📧 From:', process.env.EMAIL_USER);
+    console.log('📧 To: infomymsca@gmail.com');
+    
     const transporter = createTransporter();
+    
+    // Verify transporter configuration
+    await transporter.verify();
+    console.log('✅ Email transporter verified successfully');
+    
     await transporter.sendMail(mailOptions);
+    console.log('✅ Email sent successfully to infomymsca@gmail.com');
 
     // Send confirmation email to user
     const confirmationMailOptions = {
@@ -142,6 +158,7 @@ app.post('/api/contact', async (req, res) => {
     };
 
     await transporter.sendMail(confirmationMailOptions);
+    console.log('✅ Confirmation email sent successfully to user');
 
     res.status(200).json({
       success: true,

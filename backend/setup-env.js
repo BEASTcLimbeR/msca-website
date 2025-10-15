@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 // Create .env file with default values
 const envContent = `# Email Configuration
 EMAIL_USER=infomymsca@gmail.com
-EMAIL_PASS=your_gmail_app_password_here
+EMAIL_PASS=xuslckajvntlsvyx
 
 # Server Configuration
 PORT=5000

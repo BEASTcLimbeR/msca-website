@@ -27,11 +27,13 @@ export default function Home() {
     email: '',
     phone: '',
     subject: '',
-    message: ''
+    message: '',
+    contactType: 'individual'
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState('')
   const [isAnimating, setIsAnimating] = useState(false)
+  const [activeTab, setActiveTab] = useState<'individual' | 'company'>('individual')
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -92,6 +94,18 @@ export default function Home() {
     }))
   }
 
+  const handleTabChange = (tab: 'individual' | 'company') => {
+    setActiveTab(tab)
+    setFormData(prev => ({
+      ...prev,
+      contactType: tab,
+      firstName: '',
+      lastName: '',
+      subject: '',
+      message: ''
+    }))
+  }
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
@@ -116,8 +130,10 @@ export default function Home() {
           email: '',
           phone: '',
           subject: '',
-          message: ''
+          message: '',
+          contactType: 'individual'
         })
+        setActiveTab('individual')
       } else {
         setSubmitStatus('error')
       }
@@ -1152,6 +1168,207 @@ export default function Home() {
         </div>
       </section>
 
+       {/* Our Athletes Section */}
+       <section id="our-athletes" className="py-16 md:py-20 lg:py-24 bg-white">
+         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="text-center mb-12 md:mb-16">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+               Our Athletes
+             </h2>
+             <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+               Celebrating the remarkable achievements of our climbing champions who have brought glory to Maharashtra and India through their dedication, perseverance, and exceptional talent in sport climbing.
+             </p>
+           </div>
+
+           {/* Achievement Categories */}
+           <div className="space-y-16">
+             {/* International Achievements */}
+             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
+               <div className="text-center mb-8">
+                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                   International Achievements
+                 </h3>
+                 <p className="text-blue-700 text-lg">Representing India on the global stage</p>
+               </div>
+               
+               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">IFSC International Competition</h4>
+                   <p className="text-gray-600 text-sm mb-3">Malaysia 2015</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Lead Climbing</span>
+                       <span className="text-sm font-semibold text-orange-600">Gold</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Speed Climbing</span>
+                       <span className="text-sm font-semibold text-orange-600">Silver</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">IFSC International Competition</h4>
+                   <p className="text-gray-600 text-sm mb-3">Kazakhstan 2016</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Boulder Climbing</span>
+                       <span className="text-sm font-semibold text-orange-600">Bronze</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Lead Climbing</span>
+                       <span className="text-sm font-semibold text-orange-600">4th Place</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">Asian Championships</h4>
+                   <p className="text-gray-600 text-sm mb-3">Multiple Years</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Combined Events</span>
+                       <span className="text-sm font-semibold text-orange-600">Top 10</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Team Events</span>
+                       <span className="text-sm font-semibold text-orange-600">Medal</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+             {/* National Achievements */}
+             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg">
+               <div className="text-center mb-8">
+                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                   National Achievements
+                 </h3>
+                 <p className="text-green-700 text-lg">Dominating the Indian climbing scene</p>
+               </div>
+               
+               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">IMF National Championships</h4>
+                   <p className="text-gray-600 text-sm mb-3">2005-2024</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Gold Medals</span>
+                       <span className="text-sm font-semibold text-orange-600">25+</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Silver Medals</span>
+                       <span className="text-sm font-semibold text-orange-600">18+</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Bronze Medals</span>
+                       <span className="text-sm font-semibold text-orange-600">15+</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">National Records</h4>
+                   <p className="text-gray-600 text-sm mb-3">Speed Climbing</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Men's Speed</span>
+                       <span className="text-sm font-semibold text-orange-600">6.2s</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Women's Speed</span>
+                       <span className="text-sm font-semibold text-orange-600">7.8s</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">Championship Titles</h4>
+                   <p className="text-gray-600 text-sm mb-3">Overall Champions</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Senior Men</span>
+                       <span className="text-sm font-semibold text-orange-600">8 Times</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Senior Women</span>
+                       <span className="text-sm font-semibold text-orange-600">6 Times</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+             {/* Zonal Achievements */}
+             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+               <div className="text-center mb-8">
+                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                   Zonal Achievements
+                 </h3>
+                 <p className="text-purple-700 text-lg">West Zone dominance since 2002</p>
+               </div>
+               
+               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">IMF West Zone Championships</h4>
+                   <p className="text-gray-600 text-sm mb-3">2002-2024</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Gold Medals</span>
+                       <span className="text-sm font-semibold text-orange-600">50+</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Team Championships</span>
+                       <span className="text-sm font-semibold text-orange-600">15+</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">State Championships</h4>
+                   <p className="text-gray-600 text-sm mb-3">Maharashtra</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Overall Champions</span>
+                       <span className="text-sm font-semibold text-orange-600">20+ Years</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Individual Events</span>
+                       <span className="text-sm font-semibold text-orange-600">100+ Medals</span>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="bg-white rounded-xl p-6 shadow-md">
+                   <h4 className="font-bold text-lg text-gray-900 mb-2">Regional Competitions</h4>
+                   <p className="text-gray-600 text-sm mb-3">Pune & Mumbai</p>
+                   <div className="space-y-2">
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Local Championships</span>
+                       <span className="text-sm font-semibold text-orange-600">30+</span>
+                     </div>
+                     <div className="flex justify-between items-center">
+                       <span className="text-sm text-gray-700">Training Camps</span>
+                       <span className="text-sm font-semibold text-orange-600">50+</span>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div>
+
+           <div className="text-center mt-12">
+             <button 
+               onClick={() => router.push('/our-athletes')}
+               className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md"
+             >
+               View All Athletes & Medals
+             </button>
+           </div>
+         </div>
+       </section>
+
       {/* Shiv Chhatrapati Awardees Section */}
       <section id="achievements" className="py-16 md:py-20 lg:py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1305,29 +1522,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-       </section>
-
-       {/* Our Athletes Section */}
-       <section id="our-athletes" className="py-16 md:py-20 lg:py-24 bg-white">
-         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="text-center mb-12 md:mb-16">
-             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-               Our Athletes
-             </h2>
-             <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-               Celebrating the remarkable achievements of our climbing champions who have brought glory to Maharashtra and India through their dedication, perseverance, and exceptional talent in sport climbing.
-             </p>
-           </div>
-
-           <div className="text-center">
-             <button 
-               onClick={() => router.push('/our-athletes')}
-               className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-8 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg shadow-md"
-             >
-               View All Athletes & Medals
-             </button>
-           </div>
-         </div>
        </section>
 
        {/* Empowering the Underprivileged Section */}
@@ -1989,6 +2183,34 @@ IFSC Code: KKBK0001757`;
                 Send us a Message
               </h3>
               
+              {/* Contact Type Tabs */}
+              <div className="mb-6">
+                <div className="flex bg-white rounded-lg p-1 shadow-sm border border-gray-200">
+                  <button
+                    type="button"
+                    onClick={() => handleTabChange('individual')}
+                    className={`flex-1 py-3 px-4 text-sm font-medium rounded-md transition-all duration-200 ${
+                      activeTab === 'individual'
+                        ? 'bg-orange-500 text-white shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                  >
+                    Individual
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleTabChange('company')}
+                    className={`flex-1 py-3 px-4 text-sm font-medium rounded-md transition-all duration-200 ${
+                      activeTab === 'company'
+                        ? 'bg-orange-500 text-white shadow-sm'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                  >
+                    Company
+                  </button>
+                </div>
+              </div>
+              
               {/* Status Messages */}
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
@@ -2013,38 +2235,62 @@ IFSC Code: KKBK0001757`;
               )}
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+                {activeTab === 'individual' ? (
+                  <div className="grid md:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                        First Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                        placeholder="Enter your first name"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
+                        Last Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleInputChange}
+                        required
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
+                        placeholder="Enter your last name"
+                      />
+                    </div>
+                  </div>
+                ) : (
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
-                      First Name *
+                    <label htmlFor="companyName" className="block text-sm font-semibold text-gray-700 mb-2">
+                      Company Name *
                     </label>
                     <input
                       type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
+                      id="companyName"
+                      name="companyName"
+                      value={formData.firstName} // Using firstName field for company name
+                      onChange={(e) => {
+                        setFormData(prev => ({
+                          ...prev,
+                          firstName: e.target.value,
+                          lastName: '' // Clear lastName when company name is entered
+                        }))
+                      }}
                       required
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
-                      placeholder="Enter your first name"
+                      placeholder="Enter your company name"
                     />
                   </div>
-                  <div>
-                    <label htmlFor="lastName" className="block text-sm font-semibold text-gray-700 mb-2">
-                      Last Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
-                      placeholder="Enter your last name"
-                    />
-                  </div>
-                </div>
+                )}
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
@@ -2090,12 +2336,27 @@ IFSC Code: KKBK0001757`;
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200"
                   >
                     <option value="">Select a subject</option>
-                    <option value="training">Training Inquiry</option>
-                    <option value="membership">Membership</option>
-                    <option value="events">Events</option>
-                    <option value="coaching">Coaching</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="other">Other</option>
+                    {activeTab === 'individual' ? (
+                      <>
+                        <option value="training">Training Inquiry</option>
+                        <option value="membership">Membership</option>
+                        <option value="events">Events</option>
+                        <option value="coaching">Coaching</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="other">Other</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="partnership">Partnership Inquiry</option>
+                        <option value="corporate-training">Corporate Training</option>
+                        <option value="sponsorship">Sponsorship</option>
+                        <option value="facility-rental">Facility Rental</option>
+                        <option value="bulk-membership">Bulk Membership</option>
+                        <option value="events">Event Collaboration</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="other">Other</option>
+                      </>
+                    )}
                   </select>
                 </div>
 
@@ -2111,7 +2372,7 @@ IFSC Code: KKBK0001757`;
                     rows={5}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition-colors duration-200 resize-none"
-                    placeholder="Tell us how we can help you..."
+                    placeholder={activeTab === 'individual' ? 'Tell us how we can help you...' : 'Tell us about your company and how we can collaborate...'}
                   ></textarea>
                 </div>
 
