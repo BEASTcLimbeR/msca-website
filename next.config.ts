@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
     // your project has type errors.
     ignoreBuildErrors: true,
   },
+  turbopack: {
+    rules: {
+      '*.css': {
+        loaders: ['postcss-loader'],
+        as: '*.css',
+      },
+    },
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {
