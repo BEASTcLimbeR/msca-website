@@ -112,7 +112,7 @@ export const competitions: Competition[] = [
     type: 'World Cup',
     description: 'IFSC World Cup held in China',
     athletes: [
-      { name: 'Sahil Khan', category: 'Open', medal: 'Bronze', event: 'Overall', year: 2019, location: 'China' }
+      { name: 'Hritik Marne', category: 'Mens', medal: 'Participated', event: 'Overall', year: 2019, location: 'China' }
     ]
   },
   {
@@ -124,9 +124,9 @@ export const competitions: Competition[] = [
     type: 'World Championship',
     description: 'IFSC World Championship held in Japan',
     athletes: [
-      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2019, location: 'Japan' },
-      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2019, location: 'Japan' },
-      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2019, location: 'Japan' }
+      { name: 'Hritik Marne', category: 'Mens', medal: 'Participated', event: 'Overall', year: 2019, location: 'Japan' },
+      { name: 'Sahil Khan', category: 'Mens', medal: 'Participated', event: 'Overall', year: 2019, location: 'Japan' },
+      { name: 'Dhanshree Lekurwale', category: 'Womens', medal: 'Participated', event: 'Overall', year: 2019, location: 'Japan' }
     ]
   },
   {
@@ -138,9 +138,19 @@ export const competitions: Competition[] = [
     type: 'IFSC Asia',
     description: 'Asian Kids Championship held in Jamshedpur, India',
     athletes: [
-      { name: 'Sahil Khan', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2022, location: 'Jamshedpur' },
-      { name: 'Shreya Nankar', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2022, location: 'Jamshedpur' },
-      { name: 'Ajij Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2022, location: 'Jamshedpur' }
+      { name: 'Sharayu Hande', category: 'Kids', medal: 'Silver', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Rajvardhan Shedge', category: 'Kids', medal: 'Silver', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Sharayu Ghongade', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Irawati Tatooskar', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Jiza Malve', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Rajnandini Chawale', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Soumya Joshi', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Sumit More', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Rudra Salunke', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Neil Warke', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Kalash Mithari', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Rururaj Nikam', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Prayag Ambeti', category: 'Kids', medal: 'Participated', event: 'Overall', year: 2022, location: 'Jamshedpur' }
     ]
   },
   {
@@ -152,9 +162,8 @@ export const competitions: Competition[] = [
     type: 'IFSC Asia',
     description: 'Asia Cup held in Singapore in June 2023',
     athletes: [
-      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Singapore' },
-      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Singapore' },
-      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Singapore' }
+      { name: 'Saniya Shaikh', category: 'Junior Girls', medal: 'Participated', event: 'Overall', year: 2023, location: 'Singapore' },
+      { name: 'Yuvraj Jadhav', category: 'Youth A Boys', medal: 'Participated', event: 'Overall', year: 2023, location: 'Singapore' }
     ]
   },
   {
@@ -166,9 +175,7 @@ export const competitions: Competition[] = [
     type: 'World Championship',
     description: 'IFSC World Championship held in Bern, Switzerland',
     athletes: [
-      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Bern, Switzerland' },
-      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Bern, Switzerland' },
-      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Bern, Switzerland' }
+      { name: 'Hritik Marne', category: 'Open Men', medal: 'Participated', event: 'Overall', year: 2023, location: 'Bern, Switzerland' }
     ]
   },
   {
@@ -180,9 +187,8 @@ export const competitions: Competition[] = [
     type: 'IFSC Asia',
     description: 'Asian K Continental Championship held in Jamshedpur, India in December 2023',
     athletes: [
-      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Jamshedpur' },
-      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Jamshedpur' },
-      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Jamshedpur' }
+      { name: 'Dhruvi Padwal', category: 'Youth D Girl', medal: 'Bronze', event: 'Overall', year: 2023, location: 'Jamshedpur' },
+      { name: 'Rajvardhan Shedge', category: 'Youth D Boys', medal: 'Silver', event: 'Overall', year: 2023, location: 'Jamshedpur' }
     ]
   }
 ]
