@@ -1,7 +1,7 @@
 export interface Athlete {
   name: string
   category: string
-  medal: 'Gold' | 'Silver' | 'Bronze'
+  medal: 'Gold' | 'Silver' | 'Bronze' | 'Participated'
   event: string
   year: number
   location: string
@@ -28,9 +28,8 @@ export const competitions: Competition[] = [
     type: 'IFSC',
     description: 'International Federation of Sport Climbing competition held in Malaysia',
     athletes: [
-      { name: 'Sahil Khan', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2015, location: 'Malaysia' },
-      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2015, location: 'Malaysia' },
-      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2015, location: 'Malaysia' }
+      { name: 'Sahil Khan', category: 'Youth C', medal: 'Participated', event: 'Overall', year: 2015, location: 'Malaysia' },
+      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Bronze', event: 'Speed', year: 2015, location: 'Malaysia' }
     ]
   },
   {
@@ -42,8 +41,8 @@ export const competitions: Competition[] = [
     type: 'IFSC',
     description: 'International Federation of Sport Climbing competition held in Kazakhstan',
     athletes: [
-      { name: 'Sahil Khan', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2016, location: 'Kazakhstan' },
-      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2016, location: 'Kazakhstan' }
+      { name: 'Sahil Khan', category: 'Youth C', medal: 'Participated', event: 'Overall', year: 2016, location: 'Kazakhstan' },
+      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Participated', event: 'Overall', year: 2016, location: 'Kazakhstan' }
     ]
   },
   {
@@ -55,9 +54,9 @@ export const competitions: Competition[] = [
     type: 'IFSC',
     description: 'International Federation of Sport Climbing competition held in Singapore',
     athletes: [
-      { name: 'Sahil Khan', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2017, location: 'Singapore' },
-      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2017, location: 'Singapore' },
-      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2017, location: 'Singapore' }
+      { name: 'Sahil Khan', category: 'Youth B', medal: 'Participated', event: 'Overall', year: 2017, location: 'Singapore' },
+      { name: 'Shreya Nankar', category: 'Youth B', medal: 'Participated', event: 'Overall', year: 2017, location: 'Singapore' },
+      { name: 'Hritik Marne', category: 'Youth D', medal: 'Participated', event: 'Overall', year: 2017, location: 'Singapore' }
     ]
   },
   {
@@ -69,7 +68,7 @@ export const competitions: Competition[] = [
     type: 'Asian Games',
     description: 'Asian Games climbing competition held in Jakarta, Indonesia',
     athletes: [
-      { name: 'Sahil Khan', category: 'Open', medal: 'Bronze', event: 'Overall', year: 2018, location: 'Jakarta' }
+      { name: 'Shreya Nankar', category: 'Open', medal: 'Participated', event: 'Overall', year: 2018, location: 'Jakarta' }
     ]
   },
   {
@@ -81,10 +80,10 @@ export const competitions: Competition[] = [
     type: 'IFSC Asia',
     description: 'Asian Youth Championship held in China',
     athletes: [
-      { name: 'Sahil Khan', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' },
-      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' },
-      { name: 'Ajij Shaikh', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' },
-      { name: 'Saniya Shaikh', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' }
+      { name: 'Sahil Khan', category: 'Youth B', medal: 'Bronze', event: 'Overall', year: 2018, location: 'China' },
+      { name: 'Shreya Nankar', category: 'Youth B', medal: 'Participated', event: 'Overall', year: 2018, location: 'China' },
+      { name: 'Arundhati Jadhav', category: 'Youth B', medal: 'Participated', event: 'Overall', year: 2018, location: 'China' },
+      { name: 'Sohha Diwan', category: 'Youth B', medal: 'Participated', event: 'Overall', year: 2018, location: 'China' }
     ]
   },
   {
@@ -96,12 +95,12 @@ export const competitions: Competition[] = [
     type: 'IFSC Asia',
     description: 'Asian Kids Championship held in Bangkok, Thailand',
     athletes: [
-      { name: 'Sahil Khan', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
-      { name: 'Shreya Nankar', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
-      { name: 'Ajij Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
-      { name: 'Saniya Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
-      { name: 'Mantu Mantri', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
-      { name: 'Irfan Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' }
+      { name: 'Ananya Anbhule', category: 'Youth C', medal: 'Participated', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Diksha Bodke', category: 'Youth C', medal: 'Participated', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Adhiraj Magar', category: 'Youth C', medal: 'Participated', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Sania Shaikh', category: 'Youth D', medal: 'Participated', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Nirmayee Neve', category: 'Youth D', medal: 'Participated', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Saee Punekar', category: 'Youth D', medal: 'Participated', event: 'Overall', year: 2018, location: 'Bangkok' }
     ]
   },
   {

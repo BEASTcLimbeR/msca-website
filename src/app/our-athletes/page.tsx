@@ -1865,10 +1865,10 @@ export default function OurAthletesPage() {
 
                  {/* Row 90-92 - IFSC INTERNATIONAL COMPETITION (MALAYSIA 2015) (SR. NO 18) */}
                  <tr className="bg-white border-b border-gray-200">
-                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={3}>
+                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={2}>
                      18
                    </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={3}>
+                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={2}>
                      IFSC INTERNATIONAL COMPETITION (MALAYSIA 2015)
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
@@ -1882,9 +1882,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">Participated</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">-</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">-</span>
                      </div>
                    </td>
                  </tr>
@@ -1900,27 +1900,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
-                     </div>
-                   </td>
-                 </tr>
-                 <tr className="bg-white border-b border-gray-200">
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     AJIJ SHAIKH
-                   </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     OPEN
-                   </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200">
-                     2015
-                   </td>
-                  <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
-                    <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">-</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3 (Speed)</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">-</span>
                      </div>
                    </td>
                  </tr>
@@ -3982,7 +3964,7 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
@@ -4000,7 +3982,7 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
@@ -4018,7 +4000,7 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
@@ -4036,7 +4018,7 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
@@ -4054,7 +4036,7 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
@@ -4072,7 +4054,7 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>

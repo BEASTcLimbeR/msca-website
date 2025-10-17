@@ -17,6 +17,7 @@ export default function CompetitionPage() {
   const goldMedals = competition.athletes.filter(athlete => athlete.medal === 'Gold')
   const silverMedals = competition.athletes.filter(athlete => athlete.medal === 'Silver')
   const bronzeMedals = competition.athletes.filter(athlete => athlete.medal === 'Bronze')
+  const participatedAthletes = competition.athletes.filter(athlete => athlete.medal === 'Participated')
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -84,7 +85,7 @@ export default function CompetitionPage() {
           {/* Athletes Results */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             <div className="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
-              <h2 className="text-2xl font-bold text-white">Medal Winners</h2>
+              <h2 className="text-2xl font-bold text-white">Our athletes</h2>
             </div>
             
             <div className="p-6">
@@ -153,6 +154,31 @@ export default function CompetitionPage() {
                         <div className="flex items-center justify-between mb-2">
                           <h4 className="font-semibold text-gray-900">{athlete.name}</h4>
                           <span className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-sm font-medium">
+                            {athlete.medal}
+                          </span>
+                        </div>
+                        <p className="text-sm text-gray-600">{athlete.category} - {athlete.event}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Participated Athletes */}
+              {participatedAthletes.length > 0 && (
+                <div className="mb-8">
+                  <h3 className="text-xl font-semibold text-gray-600 mb-4 flex items-center">
+                    <svg className="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                    </svg>
+                    Participated Athletes
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {participatedAthletes.map((athlete, index) => (
+                      <div key={index} className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-semibold text-gray-900">{athlete.name}</h4>
+                          <span className="bg-gray-100 text-gray-600 px-2 py-1 rounded-full text-sm font-medium">
                             {athlete.medal}
                           </span>
                         </div>
