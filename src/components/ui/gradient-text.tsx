@@ -58,6 +58,8 @@ export const GradientText: React.FC<GradientTextProps> = ({
         }
         .gradient-char {
           display: inline-block;
+          line-height: 1.2;
+          vertical-align: baseline;
         }
       `
       document.head.appendChild(style)
@@ -75,7 +77,10 @@ export const GradientText: React.FC<GradientTextProps> = ({
         backgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
         color: 'transparent',
-        animation: `gradientShift ${animationSpeed}s ease-in-out infinite`
+        animation: `gradientShift ${animationSpeed}s ease-in-out infinite`,
+        lineHeight: '1.2',
+        display: 'block',
+        overflow: 'visible'
       }}
     >
       {children}

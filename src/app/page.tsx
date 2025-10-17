@@ -493,7 +493,7 @@ export default function Home() {
         
         <div className="text-center max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           {/* Main Title */}
-            <h1 className="text-4xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-tight drop-shadow-lg -mt-8 sm:mt-0 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+            <h1 className="text-4xl sm:text-6xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 md:mb-6 leading-relaxed drop-shadow-lg -mt-8 sm:mt-0 text-center" style={{ fontFamily: "'Playfair Display', serif", lineHeight: '1.3' }}>
               {isMobileView ? (
                 <>
                   <GradientText 
