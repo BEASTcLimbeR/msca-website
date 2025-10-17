@@ -1,6 +1,6 @@
 'use client'
 
-import GlobeThreeJS from './GlobeThreeJS'
+import InteractiveGlobe from './InteractiveGlobe'
 
 interface SimpleGlobeProps {
   rotationSpeed?: number
@@ -9,7 +9,7 @@ interface SimpleGlobeProps {
 
 const SimpleGlobe = ({ rotationSpeed = 1.2, enableInteractivity = true }: SimpleGlobeProps) => {
   return (
-    <GlobeThreeJS 
+    <InteractiveGlobe 
       rotationSpeed={rotationSpeed}
       enableInteractivity={enableInteractivity}
     />
