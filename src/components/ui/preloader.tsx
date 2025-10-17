@@ -1,6 +1,10 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import dynamic from 'next/dynamic'
+
+// Dynamically import Lottie to avoid SSR issues
+const Lottie = dynamic(() => import('lottie-react'), { ssr: false })
 
 interface PreloaderProps {
   disabled?: boolean
@@ -8,6 +12,7 @@ interface PreloaderProps {
 
 export const Preloader: React.FC<PreloaderProps> = ({ disabled = false }) => {
   const [isLoading, setIsLoading] = useState(!disabled)
+  const [animationData, setAnimationData] = useState(null)
   const [isFadingOut, setIsFadingOut] = useState(false)
 
   useEffect(() => {
@@ -18,6 +23,18 @@ export const Preloader: React.FC<PreloaderProps> = ({ disabled = false }) => {
 
     // Prevent body scrolling when preloader is active
     document.body.style.overflow = 'hidden'
+
+    // Load animation data dynamically
+    const loadAnimation = async () => {
+      try {
+        const data = await import('../../../public/decending-animation.json')
+        setAnimationData(data.default)
+      } catch (error) {
+        console.error('Failed to load animation:', error)
+      }
+    }
+
+    loadAnimation()
 
     // Check if page is fully loaded
     const handleLoad = () => {
@@ -32,7 +49,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ disabled = false }) => {
 
     // If page is already loaded, start fade out immediately
     if (document.readyState === 'complete') {
-      const timer = setTimeout(handleLoad, 2000) // 2 seconds minimum
+      const timer = setTimeout(handleLoad, 4000) // 4 seconds minimum
       return () => {
         clearTimeout(timer)
         document.body.style.overflow = 'unset'
@@ -41,7 +58,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ disabled = false }) => {
       // Wait for page to load
       window.addEventListener('load', handleLoad)
       // Fallback timer in case load event doesn't fire
-      const timer = setTimeout(handleLoad, 5000) // 5 seconds maximum
+      const timer = setTimeout(handleLoad, 8000) // 8 seconds maximum
       
       return () => {
         window.removeEventListener('load', handleLoad)
@@ -70,7 +87,7 @@ export const Preloader: React.FC<PreloaderProps> = ({ disabled = false }) => {
       }}
     >
       {/* Logo */}
-      <div className="mb-8">
+      <div className="mb-6">
         <img 
           src="/msca-logo-marathi.svg" 
           alt="MSCA Logo" 
@@ -78,24 +95,19 @@ export const Preloader: React.FC<PreloaderProps> = ({ disabled = false }) => {
         />
       </div>
 
-      {/* Simple Climbing Animation */}
-      <div className="w-32 h-32 mb-8 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="w-16 h-16 border-4 border-orange-200 rounded-full animate-spin">
-            <div className="w-12 h-12 border-4 border-orange-500 rounded-full animate-ping"></div>
+      <div className="w-64 h-64 sm:w-80 sm:h-80 mb-8" style={{ zoom: '2.0' }}>
+        {animationData ? (
+          <Lottie
+            animationData={animationData}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
+        ) : (
+          <div className="flex items-center justify-center w-full h-full">
+            <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-orange-500"></div>
           </div>
-        </div>
-        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-          <div className="flex space-x-1">
-            {[0, 1, 2, 3].map((i) => (
-              <div
-                key={i}
-                className="w-2 h-2 bg-orange-500 rounded-full animate-bounce"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              ></div>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
       
       {/* Loading text */}

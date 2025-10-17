@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-// import InteractiveGlobe from './InteractiveGlobe' // Removed for optimization
+import InteractiveGlobe from './InteractiveGlobe'
 
 const FindUsSection = () => {
   const [activeTab, setActiveTab] = useState<'globe' | 'maps'>('globe')
@@ -51,13 +51,10 @@ const FindUsSection = () => {
 
       {/* Content */}
       {activeTab === 'globe' ? (
-        <div className="w-full h-96 rounded-2xl overflow-hidden bg-gradient-to-br from-gray-900 to-gray-800 flex items-center justify-center">
-          <div className="text-center text-white">
-            <div className="text-6xl mb-4">🌍</div>
-            <h3 className="text-2xl font-bold mb-2">Interactive Globe</h3>
-            <p className="text-gray-300">Coming Soon - 3D Interactive Experience</p>
-          </div>
-        </div>
+        <InteractiveGlobe 
+          rotationSpeed={1.2}
+          enableInteractivity={true}
+        />
       ) : (
         <div className="space-y-8">
           {locations.map((location, index) => (
