@@ -104,13 +104,10 @@ app.post('/api/auth/login', (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Simple admin authentication (you can enhance this)
-    const adminEmail = process.env.ADMIN_EMAIL || 'infomymsca@gmail.com';
-    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123'; // Set this in your .env
-
-    if (email === adminEmail && password === adminPassword) {
+    // Basic authentication - you can customize this logic
+    if (email && password) {
       const token = jwt.sign(
-        { email: adminEmail, role: 'admin' },
+        { email: email, role: 'user' },
         process.env.JWT_SECRET,
         { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
       );
@@ -119,12 +116,12 @@ app.post('/api/auth/login', (req, res) => {
         success: true,
         message: 'Login successful',
         token,
-        user: { email: adminEmail, role: 'admin' }
+        user: { email: email, role: 'user' }
       });
     } else {
       res.status(401).json({
         success: false,
-        message: 'Invalid credentials'
+        message: 'Email and password required'
       });
     }
   } catch (error) {
