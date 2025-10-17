@@ -6,6 +6,19 @@ import Image from 'next/image'
 import { GradientText } from '@/components/ui/gradient-text'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
+import dynamic from 'next/dynamic'
+
+const AnimatedGlobe = dynamic(() => import('@/components/AnimatedGlobe'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-96 flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+        <p className="text-gray-600">Loading Interactive Globe...</p>
+      </div>
+    </div>
+  )
+})
 
 export default function Home() {
   const router = useRouter()
@@ -2238,7 +2251,7 @@ export default function Home() {
           {/* Section Header */}
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Our Journey Through Time
+              Our Journey
             </h2>
             <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto">
               From humble beginnings to Olympic aspirations - the remarkable evolution of climbing in Maharashtra
@@ -3123,22 +3136,15 @@ IFSC Code: KKBK0001757`;
             </div>
           </div>
 
-          {/* Map Section */}
-          <div className="mt-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
-              Find Us
-            </h3>
-            <div className="bg-gray-200 rounded-2xl h-96 flex items-center justify-center">
-              <div className="text-center">
-                <svg className="w-16 h-16 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-                <p className="text-gray-600 text-lg font-medium">Interactive Map Coming Soon</p>
-                <p className="text-gray-500">Climbing Wall, Yoga Park, HRW4+82X, Sai Nagar Park, Pimple Saudagar, Pimpri-Chinchwad, Maharashtra 411027</p>
-              </div>
-            </div>
+        {/* Interactive Globe Section */}
+        <div className="mt-16">
+          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
+            Find Us
+          </h3>
+          <div className="rounded-2xl shadow-lg overflow-hidden">
+            <AnimatedGlobe />
           </div>
+        </div>
         </div>
       </section>
 
