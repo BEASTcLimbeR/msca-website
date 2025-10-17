@@ -195,7 +195,7 @@ export default function Home() {
                   }}
                   className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200 whitespace-nowrap"
                 >
-                  About Us
+                    About Us
                 </a>
                 <a 
                   href="#about" 
@@ -242,7 +242,7 @@ export default function Home() {
                   }}
                   className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
                 >
-                  Events
+                    Events
                 </a>
                 <a 
                   href="#achievements" 
@@ -252,7 +252,17 @@ export default function Home() {
                   }}
                   className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
                 >
-                  Achievements
+                    Achievements
+                </a>
+                <a 
+                  href="#our-team" 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById('our-team')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200"
+                >
+                  Team
                 </a>
                 <a 
                   href="#contact" 
@@ -262,8 +272,8 @@ export default function Home() {
                   }}
                   className="text-black hover:text-orange-600 px-0.5 py-2 lg:text-xs xl:text-sm font-medium font-sans transition-colors duration-200 whitespace-nowrap"
                 >
-                  Contact Us
-                </a>
+                    Contact Us
+                  </a>
               </div>
             </div>
 
@@ -378,6 +388,17 @@ export default function Home() {
                 className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
               >
                 Achievements
+              </a>
+              <a 
+                href="#our-team" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById('our-team')?.scrollIntoView({ behavior: 'smooth' });
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block px-3 py-2 text-base font-medium text-black hover:text-orange-600 hover:bg-gray-50 rounded-md transition-colors duration-200"
+              >
+                Team
               </a>
               <a 
                 href="#contact" 
@@ -613,12 +634,12 @@ export default function Home() {
           {/* Event Details */}
           <div className="text-center">
             <div className="flex flex-col items-center space-y-3">
-              <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
-                <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-                <span className="text-gray-800 font-semibold">November 1, 2025</span>
-              </div>
+            <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
+              <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="text-gray-800 font-semibold">November 1, 2025</span>
+            </div>
               <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-sm rounded-full px-6 py-3 shadow-lg">
                 <span className="text-gray-800 font-semibold">1st November to 4th November 2025</span>
               </div>
@@ -700,25 +721,147 @@ export default function Home() {
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
               Foundational Journey: From PCMA to MSCA
             </h3>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-6">
+            
+            {/* Pimpri Wall Photo with First Paragraph Side by Side */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mb-8">
+              {/* Pimpri Wall Photo (appears first on mobile, first on desktop) */}
+              <div className="flex justify-center md:justify-start order-first">
+                <Image 
+                  src="/pimpri-wall-photo.svg" 
+                  alt="Pimpri Wall - First competition-standard climbing wall at Annasaheb Magar Stadium" 
+                  width={400} 
+                  height={300} 
+                  className="rounded-lg shadow-lg w-full max-w-sm md:max-w-md lg:max-w-lg"
+                />
+              </div>
+              
+              {/* First Paragraph (appears second on mobile, second on desktop) */}
+              <div className="space-y-4 md:space-y-6 order-last">
+                <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg">
               The founders of MSCA — Mr. Surendra Shelke, Mr. Sagar Palkar, and Mr. Shrikrishna Kaduskar — were also the driving force behind the Pimpri Chinchwad Mountaineering Association (PCMA). PCMA proposed the idea of a climbing wall to PCMC in the late 1990s. In a landmark moment, Surendra Shelke and a few associates traveled all the way to Bikaner—not to compete, but to observe the West Zone Sport Climbing Championship firsthand, as part of their preparation for building a climbing wall in PCMC.
             </p>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-8">
+              </div>
+            </div>
+            
+            {/* Remaining Paragraphs Below */}
+            <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg mb-6">
               In 2000, their efforts bore fruit with the construction of the first-ever competition-standard climbing wall at Annasaheb Magar Stadium, built through PCMC&apos;s support. Surendra Shelke, affectionately known as Surya, was the backbone of this project. Without his relentless drive, this wall would not have materialized.
             </p>
+            
+            {/* Location Information */}
+            <div className="bg-white rounded-xl p-8 mb-12 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-center mb-3">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h4 className="text-xl font-bold text-gray-900">Annasaheb Magar Stadium</h4>
+              </div>
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
+                Trishul Sahakari Housing Society, Yashwantnagar, Pimpri Colony, Pimpri-Chinchwad, Maharashtra 411018
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a 
+                  href="https://www.google.com/maps/dir//Annasaheb+Magar+Stadium,+Trishul+Sahakari+Housing+Society,+Yashwantnagar,+Pimpri+Colony,+Pimpri-Chinchwad,+Maharashtra+411018/@18.6374075,73.7857422,14z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3bc2b86b8da9164d:0x50c94b93eae37a24!2m2!1d73.8224244!2d18.6364695?entry=ttu&g_ep=EgoyMDI1MTAxNC4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+              </div>
+            </div>
 
             <h3 className="text-2xl md:text-3xl font-bold text-black mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
               Pioneering Competitions and Infrastructure Development
             </h3>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-6">
-              Under the guidance of the late Khaire Sir and Surya, PCMA successfully hosted the first West Zone Sport Climbing Championship in 2002, followed by the National Championship in 2005. The overwhelming success of the 2005 Nationals inspired the team to propose another climbing wall—this time in Pune.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg mb-6">
-              Though the proposal was submitted in 2005, it took five years of tireless follow-up to bring the Raje Shivaji Climbing Wall in Shivajinagar, Pune, to life. The journey was not easy—over 150 potential sites were reviewed, with many rejected due to resistance from locals and political representatives unfamiliar with the sport. In one instance, even after finalizing the land and gathering for a Bhumi Poojan (groundbreaking ceremony), opposition from locals forced the project to be scrapped at that location.
-            </p>
-            <p className="text-gray-700 leading-relaxed text-base md:text-lg">
-              Nevertheless, perseverance prevailed. The wall was finally built in 2010 and became functional by 2012. It proudly hosted the first homologated speed climbing wall in India, and also introduced the country&apos;s first timing device for speed climbing, setting new national standards.
-            </p>
+            
+            {/* RSCW Wall Photo with Text Layout */}
+            <div className="space-y-6 mb-8">
+              {/* First two paragraphs with photo side by side */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                {/* Text Content (first two paragraphs) */}
+                <div className="space-y-4 md:space-y-6 order-last md:order-first">
+                  <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg">
+                    Under the guidance of the late Anil Khaire Sir and Surya, PCMA successfully hosted the first West Zone Sport Climbing Championship in 2002, followed by the National Championship in 2005. The overwhelming success of the 2005 Nationals inspired the team to propose another climbing wall—this time in Pune.
+                  </p>
+                  <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg">
+                    Though the proposal was submitted in 2005, it took five years of tireless follow-up to bring the Raje Shivaji Climbing Wall in Shivajinagar, Pune, to life. The journey was not easy—over 150 potential sites were reviewed, with many rejected due to resistance from locals and political representatives unfamiliar with the sport.
+                  </p>
+                </div>
+                
+                {/* RSCW Wall Photo */}
+                <div className="flex justify-center md:justify-end order-first md:order-last">
+                  <Image 
+                    src="/rscw-wall-photo.svg" 
+                    alt="RSCW Wall - First homologated speed climbing wall in India" 
+                    width={400} 
+                    height={300} 
+                    className="w-full max-w-sm md:max-w-md lg:max-w-lg"
+                  />
+                </div>
+              </div>
+              
+              {/* Third paragraph below the photo */}
+              <div>
+                <p className="text-gray-700 leading-relaxed text-sm md:text-base lg:text-lg mb-6">
+                  Nevertheless, perseverance prevailed. The wall was finally built in 2010 and became functional by 2012. It proudly hosted the first homologated speed climbing wall in India, and also introduced the country&apos;s first timing device for speed climbing, setting new national standards.
+                </p>
+              </div>
+            </div>
+            
+            {/* Location Section for Raje Shivaji Climbing Wall */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+            <div className="flex-1">
+              <div className="flex items-center mb-3">
+                <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
+                  <svg className="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h4 className="text-xl font-bold text-gray-900">Raje Shivaji Climbing Wall</h4>
+              </div>
+              <p className="text-gray-600 text-base leading-relaxed mb-4">
+                Ganpathi Chowk, behind Canara Bank ATM, Shivajinagar, Pune, Maharashtra 411005
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <a 
+                  href="https://www.instagram.com/rscw_climbingwallpune/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-xl hover:from-pink-600 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                  </svg>
+                  Follow on Instagram
+                </a>
+                <a 
+                  href="https://www.google.com/maps?sca_esv=1c8d5d75502bf858&biw=1920&bih=945&sxsrf=AE3TifMOftJSBeXFW3QTawF62u_S2qWYig:1760655927559&gs_lp=Egxnd3Mtd2l6LXNlcnAiDXJhamUgc2hpdmFqaSAqAggBMgUQLhiABDIQEC4YgAQYFBiHAhjHARivATIFEC4YgAQyBRAAGIAEMgsQLhiABBjHARivATIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMhQQLhiABBiXBRjcBBjeBBjgBNgBAUjHNVCoBFirK3ADeACQAQCYAbcBoAGjFKoBBDAuMTa4AQPIAQD4AQGYAhOgAvQcwgIKEAAYsAMY1gQYR8ICChAjGIAEGCcYigXCAgQQIxgnwgILEAAYgAQYkQIYigXCAhAQLhiABBhDGMcBGIoFGK8BwgIREC4YgAQYsQMY0QMYgwEYxwHCAg4QABiABBixAxiDARiKBcICCBAAGIAEGLEDwgIKEAAYgAQYQxiKBcICFBAuGIAEGJECGMcBGIoFGI4FGK8BwgIaEC4YgAQYkQIYsQMYgwEYxwEYigUYjgUYrwHCAgsQABiABBixAxiDAcICChAuGIAEGEMYigXCAggQLhiABBixA8ICDRAuGIAEGEMY1AIYigXCAhEQLhiABBiRAhjHARiKBRivAcICCxAuGIAEGJECGIoFwgILEC4YgAQYsQMYgwHCAgoQLhiABBgCGMsBwgIfEC4YgAQYQxjHARiKBRivARiXBRjcBBjeBBjgBNgBAcICChAAGIAEGLEDGA3CAgcQABiABBgNwgIJEC4YgAQYChgNwgINEC4YgAQYxwEYDRivAZgDAIgGAZAGA7oGBggBEAEYFJIHCDMuMTUuNy0xoAfw8gKyBwQwLjE1uAfkE8IHBjAuOS4xMMgHPw&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=Kb0U3fZ8wMI7MdoHTBwDz_8O&daddr=Ganpathi+Chowk,+behind+Canara+Bank+ATM,+Shivajinagar,+Pune,+Maharashtra+411005"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold rounded-xl hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                >
+                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.828 0L6.343 16.657a8 8 0 1111.314 0z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  View on Google Maps
+                </a>
+              </div>
+            </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1180,183 +1323,674 @@ export default function Home() {
              </p>
            </div>
 
-           {/* Achievement Categories */}
-           <div className="space-y-16">
-             {/* International Achievements */}
-             <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
-               <div className="text-center mb-8">
-                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                   International Achievements
-                 </h3>
-                 <p className="text-blue-700 text-lg">Representing India on the global stage</p>
-               </div>
-               
-               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">IFSC International Competition</h4>
-                   <p className="text-gray-600 text-sm mb-3">Malaysia 2015</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Lead Climbing</span>
-                       <span className="text-sm font-semibold text-orange-600">Gold</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Speed Climbing</span>
-                       <span className="text-sm font-semibold text-orange-600">Silver</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">IFSC International Competition</h4>
-                   <p className="text-gray-600 text-sm mb-3">Kazakhstan 2016</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Boulder Climbing</span>
-                       <span className="text-sm font-semibold text-orange-600">Bronze</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Lead Climbing</span>
-                       <span className="text-sm font-semibold text-orange-600">4th Place</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">Asian Championships</h4>
-                   <p className="text-gray-600 text-sm mb-3">Multiple Years</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Combined Events</span>
-                       <span className="text-sm font-semibold text-orange-600">Top 10</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Team Events</span>
-                       <span className="text-sm font-semibold text-orange-600">Medal</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
+            {/* Achievement Categories */}
+            <div className="space-y-16">
+              {/* International Achievements */}
+              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    International Achievements
+                  </h3>
+                  <p className="text-blue-700 text-lg">Representing India on the global stage</p>
+                </div>
 
-             {/* National Achievements */}
-             <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg">
-               <div className="text-center mb-8">
-                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                   National Achievements
-                 </h3>
-                 <p className="text-green-700 text-lg">Dominating the Indian climbing scene</p>
-               </div>
-               
-               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">IMF National Championships</h4>
-                   <p className="text-gray-600 text-sm mb-3">2005-2024</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Gold Medals</span>
-                       <span className="text-sm font-semibold text-orange-600">25+</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Silver Medals</span>
-                       <span className="text-sm font-semibold text-orange-600">18+</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Bronze Medals</span>
-                       <span className="text-sm font-semibold text-orange-600">15+</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">National Records</h4>
-                   <p className="text-gray-600 text-sm mb-3">Speed Climbing</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Men's Speed</span>
-                       <span className="text-sm font-semibold text-orange-600">6.2s</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Women's Speed</span>
-                       <span className="text-sm font-semibold text-orange-600">7.8s</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">Championship Titles</h4>
-                   <p className="text-gray-600 text-sm mb-3">Overall Champions</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Senior Men</span>
-                       <span className="text-sm font-semibold text-orange-600">8 Times</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Senior Women</span>
-                       <span className="text-sm font-semibold text-orange-600">6 Times</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* IFSC International Competition Malaysia 2015 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IFSC International Competition</h4>
+                      <p className="text-sm text-gray-600">Malaysia 2015</p>
+                    </div>
+                  </div>
 
-             {/* Zonal Achievements */}
-             <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
-               <div className="text-center mb-8">
-                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                   Zonal Achievements
-                 </h3>
-                 <p className="text-purple-700 text-lg">West Zone dominance since 2002</p>
-               </div>
-               
-               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">IMF West Zone Championships</h4>
-                   <p className="text-gray-600 text-sm mb-3">2002-2024</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Gold Medals</span>
-                       <span className="text-sm font-semibold text-orange-600">50+</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Team Championships</span>
-                       <span className="text-sm font-semibold text-orange-600">15+</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">State Championships</h4>
-                   <p className="text-gray-600 text-sm mb-3">Maharashtra</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Overall Champions</span>
-                       <span className="text-sm font-semibold text-orange-600">20+ Years</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Individual Events</span>
-                       <span className="text-sm font-semibold text-orange-600">100+ Medals</span>
-                     </div>
-                   </div>
-                 </div>
-                 
-                 <div className="bg-white rounded-xl p-6 shadow-md">
-                   <h4 className="font-bold text-lg text-gray-900 mb-2">Regional Competitions</h4>
-                   <p className="text-gray-600 text-sm mb-3">Pune & Mumbai</p>
-                   <div className="space-y-2">
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Local Championships</span>
-                       <span className="text-sm font-semibold text-orange-600">30+</span>
-                     </div>
-                     <div className="flex justify-between items-center">
-                       <span className="text-sm text-gray-700">Training Camps</span>
-                       <span className="text-sm font-semibold text-orange-600">50+</span>
-                     </div>
-                   </div>
-                 </div>
-               </div>
-             </div>
-           </div>
+                  {/* IFSC International Competition Kazakhstan 2016 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IFSC International Competition</h4>
+                      <p className="text-sm text-gray-600">Kazakhstan 2016</p>
+                    </div>
+                  </div>
+
+                  {/* IFSC International Competition Singapore 2017 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IFSC International Competition</h4>
+                      <p className="text-sm text-gray-600">Singapore 2017</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Games 2018 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Games</h4>
+                      <p className="text-sm text-gray-600">Jakarta 2018</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Youth Championship China 2018 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Youth Championship</h4>
+                      <p className="text-sm text-gray-600">China 2018</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Kids Championship Bangkok 2018 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Kids Championship</h4>
+                      <p className="text-sm text-gray-600">Bangkok 2018</p>
+                    </div>
+                  </div>
+
+                  {/* World Cup China 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Cup</h4>
+                      <p className="text-sm text-gray-600">China 2019</p>
+                    </div>
+                  </div>
+
+                  {/* World Championship Japan 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Championship</h4>
+                      <p className="text-sm text-gray-600">Japan 2019</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Kids Championship Jamshedpur 2022 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Kids Championship</h4>
+                      <p className="text-sm text-gray-600">Jamshedpur 2022</p>
+                    </div>
+                  </div>
+
+                  {/* Asia Cup Singapore 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asia Cup</h4>
+                      <p className="text-sm text-gray-600">Singapore June 2023</p>
+                    </div>
+                  </div>
+
+                  {/* World Championship 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Championship</h4>
+                      <p className="text-sm text-gray-600">Bern, Switzerland 2023</p>
+                    </div>
+                  </div>
+
+                  {/* Asian K Continental Championship 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian K Continental Championship</h4>
+                      <p className="text-sm text-gray-600">Jamshedpur December 2023</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Games Trials */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Games Trials</h4>
+                      <p className="text-sm text-gray-600">Selection Event</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Games Participant 2022 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Games Participant</h4>
+                      <p className="text-sm text-gray-600">Hangzhou, China 2022</p>
+                    </div>
+                  </div>
+
+                  {/* Asian Kids Championship China 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Kids Championship</h4>
+                      <p className="text-sm text-gray-600">China 2019</p>
+                    </div>
+                  </div>
+
+                  {/* World Cup Chamunicks and Braincon 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Cup</h4>
+                      <p className="text-sm text-gray-600">Chamunicks and Braincon 2019</p>
+                    </div>
+                  </div>
+
+                  {/* World Youth Championship Italy 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Youth Championship</h4>
+                      <p className="text-sm text-gray-600">Italy 2019</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* National Achievements */}
+              <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-green-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    National Achievements
+                  </h3>
+                  <p className="text-green-700 text-lg">Dominating the Indian climbing scene</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* IMF 11th National Championship 2005 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 11th National Championship</h4>
+                      <p className="text-sm text-gray-600">Pimpri, Pune 2005</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 16th National Championship 2010 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 16th National Championship</h4>
+                      <p className="text-sm text-gray-600">New Delhi 2010</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 17th National Championship 2011 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 17th National Championship</h4>
+                      <p className="text-sm text-gray-600">2011</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 18th National Championship 2012 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 18th National Championship</h4>
+                      <p className="text-sm text-gray-600">2012</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 19th Sport Climbing Championship 2013 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 19th Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Bangalore 2013</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 20th Sport Climbing Championship 2014 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 20th Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Kolkata 2014</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 21st Sport Climbing Championship 2015 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 21st Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Delhi 2015</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 22nd Sport Climbing Championship 2016 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 22nd Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Bangalore 2016</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 23rd Sport Climbing Championship 2018 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 23rd Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Indore 2018</p>
+                    </div>
+                  </div>
+
+                  {/* IMF Cup Sport Climbing Competition 2018 - Jamshedpur */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                        <span className="text-green-600 font-bold text-sm">IMF</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF Cup Sport Climbing Competition</h4>
+                      <p className="text-sm text-gray-600">Jamshedpur 2018</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 24th National Sport Climbing Competition 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 24th National Sport Climbing Competition</h4>
+                      <p className="text-sm text-gray-600">Bangalore 2019</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 25th National Sport Climbing Championship 2020 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 25th National Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Bhubaneswar 2020</p>
+                    </div>
+                  </div>
+
+                  {/* IMF Cup Jamshedpur 2018 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF Cup Open National</h4>
+                      <p className="text-sm text-gray-600">Jamshedpur 2018</p>
+                    </div>
+                  </div>
+
+                  {/* IMF Cup Srinagar 2018 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF Cup Open National</h4>
+                      <p className="text-sm text-gray-600">Srinagar 2018</p>
+                    </div>
+                  </div>
+
+                  {/* IMF Cup Darjeeling 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF Cup Open National</h4>
+                      <p className="text-sm text-gray-600">Darjeeling 2019</p>
+                    </div>
+                  </div>
+
+                  {/* IMF Cup Sikkim 2019 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF Cup Open National</h4>
+                      <p className="text-sm text-gray-600">Sikkim 2019</p>
+                    </div>
+                  </div>
+
+                  {/* Tata Steel Sport Climbing Championship 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                        <Image src="/tata-steal-cc-logo.svg" alt="Tata Steel" width={40} height={40} className="w-10 h-10" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Tata Steel Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Jamshedpur 2023</p>
+                    </div>
+                  </div>
+
+                  {/* National Youth Cup 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                        <span className="text-green-600 font-bold text-xs">NY</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">National Youth Cup</h4>
+                      <p className="text-sm text-gray-600">Bangalore August 2023</p>
+                    </div>
+                  </div>
+
+                  {/* Tata Steel Sport Climbing Championship 2022 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                        <Image src="/tata-steal-cc-logo.svg" alt="Tata Steel" width={40} height={40} className="w-10 h-10" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Tata Steel Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Jamshedpur February 2022</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 26th National Sport Climbing Championship 2022 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 26th National Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Uttarkashi, Uttarakhand 2022</p>
+                    </div>
+                  </div>
+
+                  {/* IMF Nilgiri Cup 2022 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <Image src="/imf-logo.svg" alt="IMF" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF Nilgiri Cup</h4>
+                      <p className="text-sm text-gray-600">2022</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Zonal Achievements */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-8 shadow-lg">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-purple-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Zonal Achievements
+                  </h3>
+                  <p className="text-purple-700 text-lg">West Zone dominance since 2002</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* IMF 8th West Zone Competition 2002 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 8th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Pimpri, Pune 2002</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 9th West Zone Competition 2003 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 9th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Pimpri, Pune 2003</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 10th West Zone Competition 2004 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 10th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Sikar, Rajasthan 2004</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 11th West Zone Competition 2005 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 11th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Goregaon, Mumbai 2005</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 12th West Zone Competition 2006 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 12th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Bikaner, Rajasthan 2006</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 13th West Zone Competition 2007 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 13th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Jaipur, Rajasthan 2007</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 14th West Zone Competition 2008 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 14th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Bikaner, Rajasthan 2008</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 16th West Zone Competition 2010 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 16th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Bhopal 2010</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 18th West Zone Competition 2012 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 18th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Shivajinagar, Pune 2012</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 19th West Zone Competition 2013 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 19th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Surat, Gujarat 2013</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 20th West Zone Competition 2014 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 20th West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Beg Khadki 2014</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 21st West Zone Competition 2015 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 21st West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Beg Khadki 2015</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 22nd West Zone Competition 2016 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 22nd West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Ahmedabad 2016</p>
+                    </div>
+                  </div>
+
+                  {/* IMF 23rd West Zone Competition 2017 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">IMF 23rd West Zone Competition</h4>
+                      <p className="text-sm text-gray-600">Indore 2017</p>
+                    </div>
+                  </div>
+
+                  {/* 26th IMF West Zone Climbing Championship 2022 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">26th IMF West Zone Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Pune, Maharashtra 2022</p>
+                    </div>
+                  </div>
+
+                  {/* 27th IMF West Zone Sport Climbing Championship 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                        <Image src="/imf-westzone.svg" alt="IMF West Zone" width={32} height={32} className="w-8 h-8" />
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">27th IMF West Zone Sport Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Udaipur, Rajasthan 2023</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Other Competitions */}
+              <div className="bg-gradient-to-r from-orange-50 to-red-50 rounded-2xl p-8 shadow-lg">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-orange-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
+                    Other Competitions
+                  </h3>
+                  <p className="text-orange-700 text-lg">Additional competitions and special events</p>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* Mayor Cup 2016 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <span className="text-orange-600 font-bold text-xs">MC</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Mayor Cup</h4>
+                      <p className="text-sm text-gray-600">Pune 2016</p>
+                    </div>
+                  </div>
+
+                  {/* Catapult Cup 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <span className="text-orange-600 font-bold text-xs">CC</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Catapult Cup</h4>
+                      <p className="text-sm text-gray-600">Hyderabad 2023</p>
+                    </div>
+                  </div>
+
+                  {/* Equinox Boulder Cup 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <span className="text-orange-600 font-bold text-xs">EB</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Equinox Boulder Cup</h4>
+                      <p className="text-sm text-gray-600">Goa 2023</p>
+                    </div>
+                  </div>
+
+                  {/* Kids Climbing Championship 2023 */}
+                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
+                    <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                      <div className="w-8 h-8 bg-orange-100 rounded-full flex items-center justify-center">
+                        <span className="text-orange-600 font-bold text-xs">KC</span>
+                      </div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-base font-semibold text-gray-900 mb-1">Kids Climbing Championship</h4>
+                      <p className="text-sm text-gray-600">Climb City, Noida Aug 2023</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
            <div className="text-center mt-12">
              <button 
@@ -1365,9 +1999,9 @@ export default function Home() {
              >
                View All Athletes & Medals
              </button>
-           </div>
-         </div>
-       </section>
+          </div>
+        </div>
+      </section>
 
       {/* Shiv Chhatrapati Awardees Section */}
       <section id="achievements" className="py-16 md:py-20 lg:py-24 bg-white">
@@ -1520,8 +2154,8 @@ export default function Home() {
                 of dedication in building the sport from the grassroots.
               </p>
             </div>
-          </div>
-        </div>
+           </div>
+         </div>
        </section>
 
        {/* Empowering the Underprivileged Section */}
@@ -1933,6 +2567,94 @@ export default function Home() {
                   With the foundation laid and vision aligned, MSCA is fully prepared to take Indian Sport Climbing to Olympic glory by 2036.
                 </p>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Team Section */}
+      <section id="our-team" className="py-16 md:py-20 lg:py-24 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6" style={{ fontFamily: "'Playfair Display', serif" }}>
+              Our Team
+            </h2>
+            <p className="text-lg md:text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
+              Meet the dedicated professionals who drive Maharashtra Sports Climbing Association&apos;s success
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Team Member 1 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Surendra Shelke
+              </h3>
+            </div>
+
+            {/* Team Member 2 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Shrikrishna Kaduskar
+              </h3>
+            </div>
+
+            {/* Team Member 3 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Col. Devang Naik
+              </h3>
+            </div>
+
+            {/* Team Member 4 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Namrata Nikam
+              </h3>
+            </div>
+
+            {/* Team Member 5 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Sachin Wadekar
+              </h3>
+            </div>
+
+            {/* Team Member 6 */}
+            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 text-center">
+              <div className="w-24 h-24 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
+                Rutvij Deo
+              </h3>
             </div>
           </div>
         </div>
@@ -2430,7 +3152,7 @@ IFSC Code: KKBK0001757`;
                 <div className="bg-white rounded-lg p-4 shadow-lg mr-4">
                   <Image 
                     src="/msca-logo-marathi.svg" 
-                    alt="MSCA Logo" 
+                  alt="MSCA Logo" 
                     width={120}
                     height={48}
                     className="h-12 w-auto"
