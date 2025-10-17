@@ -130,20 +130,6 @@ const AnimatedGlobe = () => {
         <GlobeScene />
       </Suspense>
       
-      {/* Overlay with location info */}
-      <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          className="text-center"
-        >
-          <div className="bg-black/50 backdrop-blur-sm rounded-lg p-4 border border-white/20">
-            <h3 className="text-lg font-semibold text-white mb-2">Find Our Locations</h3>
-            <p className="text-sm text-gray-300">Interactive Globe</p>
-          </div>
-        </motion.div>
-      </div>
     </motion.div>
   )
 }

@@ -8,17 +8,19 @@ import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import dynamic from 'next/dynamic'
 
-const AnimatedGlobe = dynamic(() => import('@/components/AnimatedGlobe'), {
+const FindUsSection = dynamic(() => import('@/components/FindUsSection'), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-96 flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl">
+    <div className="w-full h-96 flex items-center justify-center bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl">
       <div className="text-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-        <p className="text-gray-600">Loading Interactive Globe...</p>
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-400 mx-auto mb-4"></div>
+        <p className="text-gray-300">Loading Find Us Section...</p>
       </div>
     </div>
   )
 })
+
+
 
 export default function Home() {
   const router = useRouter()
@@ -3136,15 +3138,8 @@ IFSC Code: KKBK0001757`;
             </div>
           </div>
 
-        {/* Interactive Globe Section */}
-        <div className="mt-16">
-          <h3 className="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center" style={{ fontFamily: "'Playfair Display', serif" }}>
-            Find Us
-          </h3>
-          <div className="rounded-2xl shadow-lg overflow-hidden">
-            <AnimatedGlobe />
-          </div>
-        </div>
+        {/* Find Us Section */}
+        <FindUsSection />
         </div>
       </section>
 
