@@ -19,7 +19,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000', 
     'https://mymsca.org',
-    'https://www.mymsca.org'
+    'https://www.mymsca.org',
+    'https://msca-website-q61zadcfu-rutvijs-projects-feb12702.vercel.app'
   ],
   credentials: true
 }));

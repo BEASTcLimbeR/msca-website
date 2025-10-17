@@ -5,7 +5,7 @@ const isProduction = process.env.NODE_ENV === 'production'
 // API Base URL
 export const API_BASE_URL = isDevelopment 
   ? 'http://localhost:5000' 
-  : 'https://api.mymsca.org' // Your subdomain for backend
+  : 'https://msca-website.onrender.com' // Render backend URL
 
 // API Endpoints
 export const API_ENDPOINTS = {
