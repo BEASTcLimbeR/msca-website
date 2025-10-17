@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import nodemailer from 'nodemailer';
+import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -52,6 +53,24 @@ const contactSchema = new mongoose.Schema({
 
 const Contact = mongoose.model('Contact', contactSchema);
 
+// JWT Middleware
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ success: false, message: 'Access token required' });
+  }
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ success: false, message: 'Invalid or expired token' });
+    }
+    req.user = user;
+    next();
+  });
+};
+
 // Email transporter
 const createTransporter = () => {
   return nodemailer.createTransporter({
@@ -77,6 +96,52 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString(),
     environment: process.env.NODE_ENV || 'development',
     mongodb: mongoose.connection.readyState === 1 ? 'connected' : 'disconnected'
+  });
+});
+
+// Authentication routes
+app.post('/api/auth/login', (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Simple admin authentication (you can enhance this)
+    const adminEmail = process.env.ADMIN_EMAIL || 'infomymsca@gmail.com';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'admin123'; // Set this in your .env
+
+    if (email === adminEmail && password === adminPassword) {
+      const token = jwt.sign(
+        { email: adminEmail, role: 'admin' },
+        process.env.JWT_SECRET,
+        { expiresIn: process.env.JWT_EXPIRES_IN || '7d' }
+      );
+
+      res.status(200).json({
+        success: true,
+        message: 'Login successful',
+        token,
+        user: { email: adminEmail, role: 'admin' }
+      });
+    } else {
+      res.status(401).json({
+        success: false,
+        message: 'Invalid credentials'
+      });
+    }
+  } catch (error) {
+    console.error('❌ Login error:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Login failed'
+    });
+  }
+});
+
+// Verify token endpoint
+app.get('/api/auth/verify', authenticateToken, (req, res) => {
+  res.status(200).json({
+    success: true,
+    message: 'Token is valid',
+    user: req.user
   });
 });
 
@@ -159,8 +224,8 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-// Get all contacts (admin)
-app.get('/api/admin', async (req, res) => {
+// Get all contacts (admin) - Protected route
+app.get('/api/admin', authenticateToken, async (req, res) => {
   try {
     const contacts = await Contact.find().sort({ createdAt: -1 });
     res.status(200).json({
