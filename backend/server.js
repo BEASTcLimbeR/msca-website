@@ -16,7 +16,11 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://your-domain.com'], // Add your frontend domain
+  origin: [
+    'http://localhost:3000', 
+    'https://mymsca.org',
+    'https://www.mymsca.org'
+  ],
   credentials: true
 }));
 app.use(bodyParser.json());

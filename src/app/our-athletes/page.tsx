@@ -1027,7 +1027,7 @@ export default function OurAthletesPage() {
                    <td className="px-4 py-6 text-sm text-gray-900 text-center border-r border-gray-200" colSpan={6}>
                      <div className="max-w-4xl mx-auto">
                        <div className="font-semibold text-blue-800 mb-3 text-lg">
-                         HISTORIC YEAR 2008 - PCMC'S FIRST INTERNATIONAL OFFICIAL
+                         HISTORIC YEAR 2008 - PCMC&apos;S FIRST INTERNATIONAL OFFICIAL
                        </div>
                        <p className="text-gray-700 leading-relaxed text-base">
                          YEAR 2008 WAS HISTORIC FOR THE PCMC, IN THIS YEAR THE CITY OF PCMC GOT THE FIRST EVER INTERNATIONAL 

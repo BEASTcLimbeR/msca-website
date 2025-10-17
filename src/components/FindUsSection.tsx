@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import SimpleGlobe from './SimpleGlobe'
+import InteractiveGlobe from './InteractiveGlobe'
 
 const FindUsSection = () => {
   const [activeTab, setActiveTab] = useState<'globe' | 'maps'>('globe')
@@ -12,7 +12,8 @@ const FindUsSection = () => {
       address: "HRW4+82X, Sai Nagar Park, Pimple Saudagar, Pimpri-Chinchwad, Maharashtra 411027",
       coordinates: "18.5958511,73.805109",
       googleMapsUrl: `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.1234567890!2d73.805109!3d18.5958511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2b9004032dadb%3A0x286354a86fb0b309!2sSai%20Nagar%20Park%2C%20Pimple%20Saudagar%2C%20Pimpri-Chinchwad%2C%20Maharashtra%20411027!5e0!3m2!1sen!2sin!4v1234567890!5m2!1sen!2sin`,
-      type: "Climbing Wall & Yoga Park"
+      type: "Climbing Wall & Yoga Park",
+      instagram: undefined
     }
   ]
 
@@ -50,12 +51,10 @@ const FindUsSection = () => {
 
       {/* Content */}
       {activeTab === 'globe' ? (
-        <div className="rounded-2xl shadow-lg overflow-hidden">
-          <SimpleGlobe 
-            rotationSpeed={1.0}
-            enableInteractivity={true}
-          />
-        </div>
+        <InteractiveGlobe 
+          rotationSpeed={1.2}
+          enableInteractivity={true}
+        />
       ) : (
         <div className="space-y-8">
           {locations.map((location, index) => (

@@ -7,6 +7,7 @@ import { GradientText } from '@/components/ui/gradient-text'
 import { ScrollToTop } from '@/components/ui/scroll-to-top'
 import { ThemeToggle } from '@/components/ui/theme-toggle'
 import dynamic from 'next/dynamic'
+import InternationalAchievements from '@/components/InternationalAchievements'
 
 const FindUsSection = dynamic(() => import('@/components/FindUsSection'), {
   ssr: false,
@@ -127,7 +128,7 @@ export default function Home() {
     setSubmitStatus('')
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -1341,169 +1342,7 @@ export default function Home() {
             {/* Achievement Categories */}
             <div className="space-y-16">
               {/* International Achievements */}
-              <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 shadow-lg">
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-900 mb-4" style={{ fontFamily: "'Playfair Display', serif" }}>
-                    International Achievements
-                  </h3>
-                  <p className="text-blue-700 text-lg">Representing India on the global stage</p>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {/* IFSC International Competition Malaysia 2015 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">IFSC International Competition</h4>
-                      <p className="text-sm text-gray-600">Malaysia 2015</p>
-                    </div>
-                  </div>
-
-                  {/* IFSC International Competition Kazakhstan 2016 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">IFSC International Competition</h4>
-                      <p className="text-sm text-gray-600">Kazakhstan 2016</p>
-                    </div>
-                  </div>
-
-                  {/* IFSC International Competition Singapore 2017 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">IFSC International Competition</h4>
-                      <p className="text-sm text-gray-600">Singapore 2017</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Games 2018 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Games</h4>
-                      <p className="text-sm text-gray-600">Jakarta 2018</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Youth Championship China 2018 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Youth Championship</h4>
-                      <p className="text-sm text-gray-600">China 2018</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Kids Championship Bangkok 2018 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Kids Championship</h4>
-                      <p className="text-sm text-gray-600">Bangkok 2018</p>
-                    </div>
-                  </div>
-
-                  {/* World Cup China 2019 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Cup</h4>
-                      <p className="text-sm text-gray-600">China 2019</p>
-                    </div>
-                  </div>
-
-                  {/* World Championship Japan 2019 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Championship</h4>
-                      <p className="text-sm text-gray-600">Japan 2019</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Kids Championship Jamshedpur 2022 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Kids Championship</h4>
-                      <p className="text-sm text-gray-600">Jamshedpur 2022</p>
-                    </div>
-                  </div>
-
-                  {/* Asia Cup Singapore 2023 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asia Cup</h4>
-                      <p className="text-sm text-gray-600">Singapore June 2023</p>
-                    </div>
-                  </div>
-
-                  {/* World Championship 2023 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Championship</h4>
-                      <p className="text-sm text-gray-600">Bern, Switzerland 2023</p>
-                    </div>
-                  </div>
-
-                  {/* Asian K Continental Championship 2023 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian K Continental Championship</h4>
-                      <p className="text-sm text-gray-600">Jamshedpur December 2023</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Games Trials */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Games Trials</h4>
-                      <p className="text-sm text-gray-600">Selection Event</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Games Participant 2022 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Games Participant</h4>
-                      <p className="text-sm text-gray-600">Hangzhou, China 2022</p>
-                    </div>
-                  </div>
-
-                  {/* Asian Kids Championship China 2019 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-asia-logo.svg" alt="IFSC Asia" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">Asian Kids Championship</h4>
-                      <p className="text-sm text-gray-600">China 2019</p>
-                    </div>
-                  </div>
-
-                  {/* World Cup Chamunicks and Braincon 2019 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Cup</h4>
-                      <p className="text-sm text-gray-600">Chamunicks and Braincon 2019</p>
-                    </div>
-                  </div>
-
-                  {/* World Youth Championship Italy 2019 */}
-                  <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 flex items-center space-x-4 cursor-pointer">
-                    <Image src="/ifsc-logo.svg" alt="IFSC" width={48} height={48} className="w-12 h-12 flex-shrink-0" />
-                    <div className="flex-1">
-                      <h4 className="text-base font-semibold text-gray-900 mb-1">World Youth Championship</h4>
-                      <p className="text-sm text-gray-600">Italy 2019</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <InternationalAchievements />
 
               {/* National Achievements */}
               <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-8 shadow-lg">

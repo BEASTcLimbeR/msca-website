@@ -1,0 +1,193 @@
+export interface Athlete {
+  name: string
+  category: string
+  medal: 'Gold' | 'Silver' | 'Bronze'
+  event: string
+  year: number
+  location: string
+}
+
+export interface Competition {
+  id: string
+  name: string
+  year: number
+  location: string
+  logo: string
+  type: 'IFSC' | 'IFSC Asia' | 'Asian Games' | 'World Cup' | 'World Championship'
+  athletes: Athlete[]
+  description: string
+}
+
+export const competitions: Competition[] = [
+  {
+    id: 'ifsc-malaysia-2015',
+    name: 'IFSC International Competition',
+    year: 2015,
+    location: 'Malaysia',
+    logo: '/ifsc-logo.svg',
+    type: 'IFSC',
+    description: 'International Federation of Sport Climbing competition held in Malaysia',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2015, location: 'Malaysia' },
+      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2015, location: 'Malaysia' },
+      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2015, location: 'Malaysia' }
+    ]
+  },
+  {
+    id: 'ifsc-kazakhstan-2016',
+    name: 'IFSC International Competition',
+    year: 2016,
+    location: 'Kazakhstan',
+    logo: '/ifsc-logo.svg',
+    type: 'IFSC',
+    description: 'International Federation of Sport Climbing competition held in Kazakhstan',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2016, location: 'Kazakhstan' },
+      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Bronze', event: 'Overall', year: 2016, location: 'Kazakhstan' }
+    ]
+  },
+  {
+    id: 'ifsc-singapore-2017',
+    name: 'IFSC International Competition',
+    year: 2017,
+    location: 'Singapore',
+    logo: '/ifsc-logo.svg',
+    type: 'IFSC',
+    description: 'International Federation of Sport Climbing competition held in Singapore',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2017, location: 'Singapore' },
+      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2017, location: 'Singapore' },
+      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2017, location: 'Singapore' }
+    ]
+  },
+  {
+    id: 'asian-games-2018',
+    name: 'Asian Games',
+    year: 2018,
+    location: 'Jakarta',
+    logo: '/ifsc-asia-logo.svg',
+    type: 'Asian Games',
+    description: 'Asian Games climbing competition held in Jakarta, Indonesia',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Open', medal: 'Bronze', event: 'Overall', year: 2018, location: 'Jakarta' }
+    ]
+  },
+  {
+    id: 'asian-youth-china-2018',
+    name: 'Asian Youth Championship',
+    year: 2018,
+    location: 'China',
+    logo: '/ifsc-asia-logo.svg',
+    type: 'IFSC Asia',
+    description: 'Asian Youth Championship held in China',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' },
+      { name: 'Shreya Nankar', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' },
+      { name: 'Ajij Shaikh', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' },
+      { name: 'Saniya Shaikh', category: 'Youth C', medal: 'Gold', event: 'Overall', year: 2018, location: 'China' }
+    ]
+  },
+  {
+    id: 'asian-kids-bangkok-2018',
+    name: 'Asian Kids Championship',
+    year: 2018,
+    location: 'Bangkok',
+    logo: '/ifsc-asia-logo.svg',
+    type: 'IFSC Asia',
+    description: 'Asian Kids Championship held in Bangkok, Thailand',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Shreya Nankar', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Ajij Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Saniya Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Mantu Mantri', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' },
+      { name: 'Irfan Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2018, location: 'Bangkok' }
+    ]
+  },
+  {
+    id: 'world-cup-china-2019',
+    name: 'World Cup',
+    year: 2019,
+    location: 'China',
+    logo: '/ifsc-logo.svg',
+    type: 'World Cup',
+    description: 'IFSC World Cup held in China',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Open', medal: 'Bronze', event: 'Overall', year: 2019, location: 'China' }
+    ]
+  },
+  {
+    id: 'world-championship-japan-2019',
+    name: 'World Championship',
+    year: 2019,
+    location: 'Japan',
+    logo: '/ifsc-logo.svg',
+    type: 'World Championship',
+    description: 'IFSC World Championship held in Japan',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2019, location: 'Japan' },
+      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2019, location: 'Japan' },
+      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2019, location: 'Japan' }
+    ]
+  },
+  {
+    id: 'asian-kids-jamshedpur-2022',
+    name: 'Asian Kids Championship',
+    year: 2022,
+    location: 'Jamshedpur',
+    logo: '/ifsc-asia-logo.svg',
+    type: 'IFSC Asia',
+    description: 'Asian Kids Championship held in Jamshedpur, India',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Shreya Nankar', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2022, location: 'Jamshedpur' },
+      { name: 'Ajij Shaikh', category: 'Kids', medal: 'Gold', event: 'Overall', year: 2022, location: 'Jamshedpur' }
+    ]
+  },
+  {
+    id: 'asia-cup-singapore-2023',
+    name: 'Asia Cup',
+    year: 2023,
+    location: 'Singapore',
+    logo: '/ifsc-asia-logo.svg',
+    type: 'IFSC Asia',
+    description: 'Asia Cup held in Singapore in June 2023',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Singapore' },
+      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Singapore' },
+      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Singapore' }
+    ]
+  },
+  {
+    id: 'world-championship-bern-2023',
+    name: 'World Championship',
+    year: 2023,
+    location: 'Bern, Switzerland',
+    logo: '/ifsc-logo.svg',
+    type: 'World Championship',
+    description: 'IFSC World Championship held in Bern, Switzerland',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Bern, Switzerland' },
+      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Bern, Switzerland' },
+      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Bern, Switzerland' }
+    ]
+  },
+  {
+    id: 'asian-k-continental-jamshedpur-2023',
+    name: 'Asian K Continental Championship',
+    year: 2023,
+    location: 'Jamshedpur',
+    logo: '/ifsc-asia-logo.svg',
+    type: 'IFSC Asia',
+    description: 'Asian K Continental Championship held in Jamshedpur, India in December 2023',
+    athletes: [
+      { name: 'Sahil Khan', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Jamshedpur' },
+      { name: 'Shreya Nankar', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Jamshedpur' },
+      { name: 'Ajij Shaikh', category: 'Open', medal: 'Gold', event: 'Overall', year: 2023, location: 'Jamshedpur' }
+    ]
+  }
+]
+
+export const getCompetitionById = (id: string): Competition | undefined => {
+  return competitions.find(comp => comp.id === id)
+}

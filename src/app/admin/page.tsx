@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 
 interface Contact {
   _id: string
@@ -136,12 +137,12 @@ export default function AdminPage() {
               <h1 className="text-3xl font-bold text-gray-900">Contact Submissions</h1>
               <p className="text-gray-600 mt-1">Manage contact form submissions</p>
             </div>
-            <a
+            <Link
               href="/"
               className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg transition-colors duration-200"
             >
               Back to Website
-            </a>
+            </Link>
           </div>
         </div>
       </div>
