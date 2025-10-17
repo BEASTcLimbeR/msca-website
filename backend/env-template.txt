@@ -10,5 +10,5 @@ EMAIL_USER=your_email@gmail.com
 EMAIL_PASS=your_email_app_password
 
 # JWT Configuration
-JWT_SECRET=your_super_secret_jwt_key_here_make_it_long_and_secure
+JWT_SECRET=6b1529cd4df35994e64052bbfcb98707df5553eb91ca1377b6168a2c121c30a6fb3fd26c001c97e177d977f0b81043379b5ec9c4133febdbd8db9bafc57b7455
 JWT_EXPIRES_IN=7d
