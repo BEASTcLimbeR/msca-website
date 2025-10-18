@@ -2471,7 +2471,7 @@ export default function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-2" style={{ fontFamily: "'Playfair Display', serif" }}>
-                Col. Devang Naik
+                Col Devang Naik (Ret.)
               </h3>
             </div>
 
