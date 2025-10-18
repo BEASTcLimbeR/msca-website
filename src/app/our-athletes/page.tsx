@@ -495,8 +495,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -1059,8 +1059,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1076,9 +1076,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                      </div>
                    </td>
                  </tr>
@@ -1094,9 +1094,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                      </div>
                    </td>
                  </tr>
@@ -1113,8 +1113,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1131,8 +1131,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1149,8 +1149,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1166,9 +1166,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1184,9 +1184,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1202,8 +1202,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -1221,8 +1221,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1239,8 +1239,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -1669,10 +1669,10 @@ export default function OurAthletesPage() {
 
                  {/* Row 80-86 - IMF 20TH WEST ZONE COMPETITION 2014 - ZONAL (SR. NO 16) */}
                  <tr className="bg-white border-b border-gray-200">
-                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={7}>
+                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={6}>
                      16
                    </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={7}>
+                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={6}>
                      IMF 20TH WEST ZONE COMPETITION 2014 - ZONAL (VENUE BEG KHADKI)
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
@@ -1686,8 +1686,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -1782,25 +1782,6 @@ export default function OurAthletesPage() {
                      </div>
                    </td>
                  </tr>
-                 <tr className="bg-white border-b border-gray-200">
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     SHREYA NANKAR
-                   </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     S J GIRLS
-                   </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200">
-                     2014
-                   </td>
-                  <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
-                    <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                     </div>
-                   </td>
-                 </tr>
-
                  {/* Row 87-89 - IMF 20TH SPORT CLIMBING CHAMPIONSHIP - NATIONAL 2014 (SR. NO 17) */}
                  <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={3}>
@@ -1846,7 +1827,7 @@ export default function OurAthletesPage() {
                  </tr>
                  <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     SHRYEA NANKAR
+                     SHREYA NANKAR
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      S J GIRLS
@@ -1901,20 +1882,38 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">-</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3 (Speed)</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">-</span>
                      </div>
                    </td>
                  </tr>
 
-                 {/* Row 93-103 - IMF 21ST WEST ZONE COMPETITION 2015 - ZONAL (SR. NO 19) */}
+                 {/* Row 93-104 - IMF 21ST WEST ZONE COMPETITION 2015 - ZONAL (SR. NO 19) */}
                  <tr className="bg-white border-b border-gray-200">
-                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={11}>
+                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200" rowSpan={12}>
                      19
                    </td>
-                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={11}>
+                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={12}>
                      IMF 21ST WEST ZONE COMPETITION 2015 - ZONAL (VENUE BEG KHADKI)
                    </td>
+                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
+                     AJIJ SHAIKH
+                   </td>
+                   <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
+                     OPEN
+                   </td>
+                   <td className="px-4 py-4 text-sm text-gray-900 text-center border-r border-gray-200">
+                     2015
+                   </td>
+                  <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
+                    <div className="grid grid-cols-3 gap-6">
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
+                     </div>
+                   </td>
+                 </tr>
+                 <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      VICKY BHALERAO
                    </td>
@@ -2158,7 +2157,7 @@ export default function OurAthletesPage() {
                  </tr>
                  <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     SHRYEA NANKAR
+                     SHREYA NANKAR
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      S J GIRLS
@@ -2624,8 +2623,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -2849,8 +2848,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -2874,7 +2873,7 @@ export default function OurAthletesPage() {
                  </tr>
                  <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     SHRYEA NANKAR
+                     SHREYA NANKAR
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      S J GIRLS
@@ -2911,8 +2910,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                      </div>
                    </td>
                  </tr>
@@ -2929,8 +2928,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                      </div>
                    </td>
                  </tr>
@@ -2947,8 +2946,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                      </div>
                    </td>
                  </tr>
@@ -3009,8 +3008,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">0</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -3026,8 +3025,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                      </div>
                    </td>
@@ -3080,8 +3079,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                      </div>
                    </td>
@@ -3152,8 +3151,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -3340,15 +3339,15 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
                  <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     SHRYEA NANKAR
+                     SHREYA NANKAR
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      JUNIOR GIRLS
@@ -3376,8 +3375,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -3402,7 +3401,7 @@ export default function OurAthletesPage() {
                  </tr>
                  <tr className="bg-white border-b border-gray-200">
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
-                     SANIA SHAIKH
+                     SANIYA SHAIKH
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      S J GIRLS
@@ -3412,8 +3411,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
