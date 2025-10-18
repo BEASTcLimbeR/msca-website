@@ -25,24 +25,42 @@ const FindUsSection = () => {
       
       {/* Tab Navigation */}
       <div className="flex justify-center mb-8">
-        <div className="bg-gray-100 rounded-lg p-1 flex">
+        <div className="bg-gray-100 rounded-lg p-1 flex relative overflow-hidden">
+          {/* Animated Background Slider */}
+          <div 
+            className={`absolute top-1 bottom-1 bg-gradient-to-r from-blue-600 to-blue-700 rounded-md shadow-lg transition-all duration-500 ease-out transform ${
+              activeTab === 'globe' 
+                ? 'translate-x-0 w-[calc(50%-0.125rem)]' 
+                : 'translate-x-full w-[calc(50%-0.125rem)]'
+            }`}
+            style={{
+              transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+            }}
+          />
+          
           <button
             onClick={() => setActiveTab('globe')}
-            className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+            className={`relative z-10 px-6 py-2 rounded-md text-sm font-medium transition-all duration-500 ease-out ${
               activeTab === 'globe'
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'text-white transform scale-105'
+                : 'text-gray-600 hover:text-gray-900 hover:scale-105'
             }`}
+            style={{
+              transition: 'color 0.3s ease-out, transform 0.2s ease-out'
+            }}
           >
             Interactive Globe
           </button>
           <button
             onClick={() => setActiveTab('maps')}
-            className={`px-6 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+            className={`relative z-10 px-6 py-2 rounded-md text-sm font-medium transition-all duration-500 ease-out ${
               activeTab === 'maps'
-                ? 'bg-blue-600 text-white shadow-md'
-                : 'text-gray-600 hover:text-gray-900'
+                ? 'text-white transform scale-105'
+                : 'text-gray-600 hover:text-gray-900 hover:scale-105'
             }`}
+            style={{
+              transition: 'color 0.3s ease-out, transform 0.2s ease-out'
+            }}
           >
             Google Maps
           </button>

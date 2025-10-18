@@ -2761,26 +2761,44 @@ IFSC Code: KKBK0001757`;
               
               {/* Contact Type Tabs */}
               <div className="mb-6">
-                <div className="flex bg-white rounded-lg p-1 shadow-sm border border-gray-200">
+                <div className="flex bg-white rounded-lg p-1 shadow-sm border border-gray-200 relative overflow-hidden">
+                  {/* Animated Background Slider */}
+                  <div 
+                    className={`absolute top-1 bottom-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-md shadow-lg transition-all duration-500 ease-out transform ${
+                      activeTab === 'individual' 
+                        ? 'translate-x-0 w-[calc(50%-0.125rem)]' 
+                        : 'translate-x-full w-[calc(50%-0.125rem)]'
+                    }`}
+                    style={{
+                      transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
+                    }}
+                  />
+                  
                   <button
                     type="button"
                     onClick={() => handleTabChange('individual')}
-                    className={`flex-1 py-3 px-4 text-sm font-medium rounded-md transition-all duration-200 ${
+                    className={`relative z-10 flex-1 py-3 px-4 text-sm font-medium rounded-md transition-all duration-500 ease-out ${
                       activeTab === 'individual'
-                        ? 'bg-orange-500 text-white shadow-sm'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                        ? 'text-white transform scale-105'
+                        : 'text-gray-600 hover:text-gray-900 hover:scale-105'
                     }`}
+                    style={{
+                      transition: 'color 0.3s ease-out, transform 0.2s ease-out'
+                    }}
                   >
                     Individual
                   </button>
                   <button
                     type="button"
                     onClick={() => handleTabChange('company')}
-                    className={`flex-1 py-3 px-4 text-sm font-medium rounded-md transition-all duration-200 ${
+                    className={`relative z-10 flex-1 py-3 px-4 text-sm font-medium rounded-md transition-all duration-500 ease-out ${
                       activeTab === 'company'
-                        ? 'bg-orange-500 text-white shadow-sm'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                        ? 'text-white transform scale-105'
+                        : 'text-gray-600 hover:text-gray-900 hover:scale-105'
                     }`}
+                    style={{
+                      transition: 'color 0.3s ease-out, transform 0.2s ease-out'
+                    }}
                   >
                     Company
                   </button>
