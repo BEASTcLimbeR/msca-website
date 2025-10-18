@@ -5280,8 +5280,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -5333,9 +5333,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -5612,8 +5612,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -5648,8 +5648,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                      </div>
                    </td>
                  </tr>
@@ -5771,8 +5771,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -5789,8 +5789,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
@@ -7064,8 +7064,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                      </div>
                    </td>
                  </tr>
@@ -7076,7 +7076,7 @@ export default function OurAthletesPage() {
                      66
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200" rowSpan={1}>
-                     
+                     CHONGQING 18TH 23RD CHINA
                    </td>
                    <td className="px-4 py-4 text-sm text-gray-900 border-r border-gray-200">
                      SOUMYA KASTURE
@@ -7090,8 +7090,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">PARTICIPATED</span>
                      </div>
                    </td>
                  </tr>
@@ -7152,8 +7152,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">2</span>
                      </div>
                    </td>
                  </tr>
@@ -7278,8 +7278,8 @@ export default function OurAthletesPage() {
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
-                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
@@ -7403,8 +7403,8 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
+                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">1</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                      </div>
                    </td>
@@ -7465,9 +7465,9 @@ export default function OurAthletesPage() {
                    </td>
                   <td className="px-4 py-4 text-sm text-gray-900 text-center w-96">
                     <div className="grid grid-cols-3 gap-6">
-                       <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
                        <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                        <span className="bg-orange-100 text-orange-800 px-4 py-1 rounded text-xs font-medium">3</span>
+                       <span className="bg-gray-100 text-gray-600 px-4 py-1 rounded text-xs">NA</span>
                      </div>
                    </td>
                  </tr>
